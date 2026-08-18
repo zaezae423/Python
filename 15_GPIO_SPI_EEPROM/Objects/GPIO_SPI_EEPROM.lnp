@@ -1,0 +1,11 @@
+--cpu Cortex-M3
+".\objects\func.o"
+".\objects\gpio_out.o"
+".\objects\stm32f10x_it.o"
+".\objects\system_stm32f10x.o"
+".\objects\user.o"
+".\lib\stm32f10x_lib.lib"
+--library_type=microlib --strict --scatter ".\Objects\GPIO_SPI_EEPROM.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\GPIO_SPI_EEPROM.map" -o .\Objects\GPIO_SPI_EEPROM.axf

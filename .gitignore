@@ -1,0 +1,16 @@
+﻿.claude/
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+.venv/
+venv/
+.env
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+XGBclassify_sample02/data/raw_total_data.csv
+XGBclassify_sample02/data/실습데이터.csv

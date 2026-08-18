@@ -1,0 +1,4 @@
+// PORTA.0 : CLK
+// PORTA.1 : MOSI
+// PORTA.2 : MISO
+// Memory Address : 0x20002000
